@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Home Page</title>
+    <title>Smart To-Do List</title>
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
@@ -12,6 +12,26 @@
   </head>
 
   <body>
-    <h1>Hello World!</h1>
+
+    <nav id="nav-bar">
+      Smart To-Do
+      <button>Register</button>
+      <button>Log In</button>
+    </nav>
+
+    <h1>Welcome</h1>
+
+    <section class="addItem">
+      <h2>Add a new item</h2>
+      <form action="/" method="POST">
+      <textarea id="newItem" name="text" placeholder="type the item you want to add"></textarea>
+      <input type="submit" name="submit" value="Add">
+    </section>
+
+    <section class="userLists">
+    </section>
+
+
+
   </body>
 </html>

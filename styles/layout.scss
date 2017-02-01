@@ -4,4 +4,11 @@ body {
   h1 {
     color: #244751;
   }
+
+  #nav-bar {
+    position: fixed;
+    top: 0;
+    background-color: white;
+    z-index: 1;
+  }
 }
