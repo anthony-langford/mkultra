@@ -26,7 +26,7 @@ module.exports = (knex) => {
       });
   });
 
-  router.post("/api/users", (req, res) => {
+  router.post("/", (req, res) => {
     if (!req.body.text) {
       res.status(400).json({ error: 'Invalid Request: No input in POST body' });
       return;
