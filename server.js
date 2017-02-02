@@ -13,6 +13,7 @@ const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
+const omdb        = require('omdb');
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
@@ -43,9 +44,55 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.post("/", (req, res) => {
+router.get("/", (req, res) => {
+  // knex
+  //   .select("*")
+  //   .from("users")
+  //   .leftJoin("useritems", "users.id", "useritems.user_id")
+  //   .leftJoin("items", "items.id", "useritems.item_id")
+  //   .then((useritem) => {
+  //     console.log(useritem);
+  //     res.json(useritem);
+  //   });
 
-})
+  omdb.get({ title: 'Saw' }, true, (err, movie) => {
+    if(err) {
+        return console.error(err);
+    }
+
+    if(!movie) {
+        return console.log('Movie not found!');
+    }
+
+    console.log(movie.title + " " + movie.year + " " + movie.imdb.rating);
+    console.log(movie.plot);
+    res.json(movie);
+  });
+
+  // Get streamable .jpeg poster from iMDB
+  // omdb.poster({ title: 'Saw' }, true, function(err, movie) {
+  //   if(err) {
+  //       return console.error(err);
+  //   }
+
+  //   if(!movie) {
+  //       return console.log('Movie not found!');
+  //   }
+  //   });
+
+});
+
+router.post("/", (req, res) => {
+  if (!req.body.text) {
+    res.status(400).json({ error: 'Invalid Request: No input in POST body' });
+    return;
+  }
+  // const user = req.body.user ? req.body.user : res.status(400).json({ error: 'Invalid User' });
+  const post = {
+    text: req.body.text
+  }
+  console.log(post);
+});
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);

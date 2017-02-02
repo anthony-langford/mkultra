@@ -1,24 +1,39 @@
 $(document).ready(function() {
-  // function renderLists() {
-  //   $.ajax({
-  //     method: "GET",
-  //     url: "/api/users"
-  //   }).success((lists) => {
-  //     for(list of lists) {
-  //       $("<div>").text(user.name).appendTo($("body"));
-  //     }
-  //   });
-  // }
+
+  () => {
+    $.ajax({
+      method: "GET",
+      url: "/api/users",
+      success: (movieData) => {
+        $("<div>").text(movieData).appendTo($(".addItem"));
+      }
+    });
+  }
+
 
   $(function() {
     let newItemButton = $(".addItem input");
-    console.log(newItemButton);
+
     newItemButton.click(function() {
+      event.preventDefault();
+
+    let post = (itemName) => {
+      $.ajax({
+        url: "/api/users",
+        type: "POST",
+        data: itemName,
+        success: () => {
+          console.log("Success");
+          // render lists
+        }
+      });
+    }
+
       let itemName = $(".addItem form").serialize();
       console.log(itemName);
-      event.preventDefault();
       console.log("Submit item button clicked, performing Ajax call...");
 
+      // Check for empty form and return alert error
       if (itemName === "text=") {
         console.log("Empty form");
         if ($("alert")) {
@@ -34,25 +49,9 @@ $(document).ready(function() {
       } else {
         if ($("alert")) {
           $("alert").remove();
-          $.ajax({
-            url: "/api/users",
-            type: "POST",
-            data: itemName,
-            success: function() {
-              console.log("Success");
-              // render lists
-            }
-          });
+          post(itemName);
         } else {
-          $.ajax({
-            url: "/",
-            type: "POST",
-            data: itemName,
-            success: function() {
-              console.log("Success");
-              // render lists
-            }
-          });
+          post(itemName);
         }
       }
     });
