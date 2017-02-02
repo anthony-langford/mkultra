@@ -3,7 +3,7 @@ $(() => {
     method: "GET",
     url: "/api/users"
   }).done((data) => {
-    let table = `<table>
+    let table = `<table border=1px>
         <tr>
           <th>username</th>
           <th>itemname</th>
