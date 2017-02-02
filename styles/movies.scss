@@ -30,7 +30,7 @@ section.userLists {
 
     .container {
 
-      img {
+      img.poster {
         float: left;
         width: 150px;
         height: 226px;
@@ -42,7 +42,7 @@ section.userLists {
         display: flex;
         flex-wrap: wrap;
 
-        .genre {
+        .genres {
           border: 1px solid black;
           padding: 5px;
           order: 1;
@@ -70,7 +70,7 @@ section.userLists {
           flex-grow: 1;
           margin: 2px 2px 0;
         }
-        .length {
+        .runtime {
           border: 1px solid black;
           padding: 5px;
           order: 5;
