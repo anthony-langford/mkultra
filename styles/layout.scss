@@ -11,4 +11,11 @@ body {
     background-color: white;
     z-index: 1;
   }
+
+  .addItem {
+    .newItem {
+      display: block;
+      margin: 5px;
+    }
+  }
 }

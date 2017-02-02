@@ -25,7 +25,8 @@
     <section class="addItem">
       <h2>Add a new item</h2>
       <form method="POST" action="/api/users">
-        <textarea id="newItem" name="text" placeholder="type the item you want to add"></textarea>
+        <textarea class="newItem" name="item" placeholder="type the item you want to add"></textarea>
+        <textarea class="newItem" name="comment" placeholder="add a comment"></textarea>
         <input type="submit" name="submit" value="Add">
       </form>
     </section>
@@ -63,8 +64,5 @@
       </article>
 
     </section>
-
-
-
   </body>
 </html>

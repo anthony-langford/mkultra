@@ -55,14 +55,14 @@ app.get("/imdb", (req, res) => {
   //     console.log(useritem);
   //     res.json(useritem);
   //   });
-  console.log(1234, req.query.text);
+  console.log('Searched for: ', req.query.text);
 
   omdb.get({ title: req.query.text }, true, (err, itemData) => {
     if(err) {
         return console.error(err);
     }
 
-    if(!item) {
+    if(!itemData) {
         return console.log('Item not found!');
     }
 
