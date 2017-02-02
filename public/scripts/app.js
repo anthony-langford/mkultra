@@ -19,6 +19,5 @@ $(() => {
         </table>
         `;
         $(".addItem").append(table);
-      // $("<div>").text(user.name).appendTo($("body"));
   });
 });
