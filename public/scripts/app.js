@@ -14,16 +14,18 @@ $(document).ready() => {
     let newItemButton = $(".addItem input");
     newItemButton.click(function() {
       let itemName = $(".addItem form").serialize();
-    })
+      console.log(itemName);
+      event.preventDefault();
+      console.log("Submit item button clicked, performing Ajax call...");
 
-    $.ajax({
-      method: "GET",
-      url: "/api/users"
-    }).success(() => {
-      console.log("Success");
-      renderLists();
+      $.ajax({
+        method: "GET",
+        url: "/api/users"
+      }).success(() => {
+        console.log("Success");
+        renderLists();
+      });
     });
-  }
 
   getUsers();
 };

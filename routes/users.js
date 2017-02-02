@@ -31,12 +31,9 @@ module.exports = (knex) => {
       res.status(400).json({ error: 'Invalid Request: No input in POST body' });
       return;
     }
-    const user = req.body.user ? req.body.user : res.status(400).json({ error: 'Invalid User '});
+    const user = req.body.user ? req.body.user : res.status(400).json({ error: 'Invalid User' });
     const post = {
-      // user: user,
-      content: {
-        text: req.body.text
-      },
+      text: req.body.text
     }
   });
 
