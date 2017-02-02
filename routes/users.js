@@ -16,7 +16,7 @@ module.exports = (knex) => {
 
   router.get("/", (req, res) => {
     knex
-      .select("*")
+      .select("users.name as username", "items.name as itemname", "items.category as cat", "useritems.comment as comment")
       .from("users")
       .leftJoin("useritems", "users.id", "useritems.user_id")
       .leftJoin("items", "items.id", "useritems.item_id")
