@@ -15,6 +15,9 @@ module.exports = (knex) => {
   // });
 
   router.get("/", (req, res) => {
+    let url = 'http://www.omdbapi.com/?t=scream';
+
+
     knex
       .select("users.name as username", "items.name as itemname", "items.category as cat", "useritems.comment as comment")
       .from("users")
