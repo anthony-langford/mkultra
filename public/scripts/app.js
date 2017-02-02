@@ -46,6 +46,15 @@ $(document).ready(function() {
       } else {
         if ($("alert")) {
           $("alert").remove();
+
+          let url = 'http://www.omdbapi.com/?t=scream';
+          $.ajax({
+            url: url,
+            type: "GET",
+            success: function(data) {
+              console.log(data);
+            }
+          })
           $.ajax({
             url: "/api/users",
             type: "POST",
@@ -56,6 +65,14 @@ $(document).ready(function() {
             }
           });
         } else {
+          let url = 'http://www.omdbapi.com/?t=scream';
+          $.ajax({
+            url: url,
+            type: "GET",
+            success: function(data) {
+              console.log(data);
+            }
+          })
           $.ajax({
             url: "/",
             type: "POST",
