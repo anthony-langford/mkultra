@@ -1,33 +1,55 @@
 $(document).ready(function() {
 
-  () => {
-    $.ajax({
-      method: "GET",
-      url: "/api/users",
-      success: (movieData) => {
-        $("<div>").text(movieData).appendTo($(".addItem"));
-      }
-    });
-  }
+  let userid = "";
+  let userItems = [];
 
-
+  // Submit item and send GET req to oMDB to scrape for item data, then POST to save data to db
   $(function() {
     let newItemButton = $(".addItem input");
 
-    newItemButton.click(function() {
-      event.preventDefault();
-
-    let post = (itemName) => {
+    let post = (newItem) => {
+      // let data = { item: newItem, comment: "sdfsfafaf" }
       $.ajax({
         url: "/api/users",
         type: "POST",
-        data: itemName,
-        success: () => {
-          console.log("Success");
-          // render lists
+        data: data,
+        success: (newItem) => {
+          console.log("Successful db entry");
+          // append new html element
         }
       });
     }
+
+    let getImdbItem = (itemName) => {
+      $.ajax({
+        method: "GET",
+        url: "/imdb",
+        data: itemName,
+        success: (itemData) => {
+          console.log("Successful iMDB API request")
+          $("<div>").text(itemData.title + " " + itemData.year + " " + itemData.genres + " " + itemData.imdb.rating).appendTo($(".addItem"));
+          let date = Date.now();
+          const newItem = {
+            title: itemData.title,
+            year: itemData.year,
+            rating: itemData.imdb.rating,
+            // comment: itemData.,
+            poster: itemData.poster,
+            genre: itemData.genres,
+            rated: itemData.rated,
+            director: itemData.director,
+            length: itemData.runtime,
+            plot: itemData.plot,
+            date: date,
+          }
+          userItems.push(newItem);
+          post(newItem);
+        }
+      });
+    }
+
+    newItemButton.click(function() {
+      event.preventDefault();
 
       let itemName = $(".addItem form").serialize();
       console.log(itemName);
@@ -38,7 +60,7 @@ $(document).ready(function() {
         console.log("Empty form");
         if ($("alert")) {
           $("alert").remove();
-          let alert = $("<alert>").addClass("alert").text("You can't send an empty tweet!");
+          let alert = $("<alert>").addClass("alert").text("Write something dummy!");
           $(".addItem").addClass("alert").append(alert);
           return;
         } else {
@@ -49,9 +71,9 @@ $(document).ready(function() {
       } else {
         if ($("alert")) {
           $("alert").remove();
-          post(itemName);
+          getImdbItem(itemName);
         } else {
-          post(itemName);
+          getImdbItem(itemName);
         }
       }
     });

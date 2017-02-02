@@ -44,7 +44,8 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-router.get("/", (req, res) => {
+// Get item data from iMDB
+app.get("/imdb", (req, res) => {
   // knex
   //   .select("*")
   //   .from("users")
@@ -54,22 +55,22 @@ router.get("/", (req, res) => {
   //     console.log(useritem);
   //     res.json(useritem);
   //   });
+  console.log(1234, req.query.text);
 
-  omdb.get({ title: 'Saw' }, true, (err, movie) => {
+  omdb.get({ title: req.query.text }, true, (err, itemData) => {
     if(err) {
         return console.error(err);
     }
 
-    if(!movie) {
-        return console.log('Movie not found!');
+    if(!item) {
+        return console.log('Item not found!');
     }
 
-    console.log(movie.title + " " + movie.year + " " + movie.imdb.rating);
-    console.log(movie.plot);
-    res.json(movie);
+    // console.log(item);
+    res.json(itemData);
   });
 
-  // Get streamable .jpeg poster from iMDB
+  // Get streamable .jpeg poster from iMDB and return both movie and img url (use promises?)
   // omdb.poster({ title: 'Saw' }, true, function(err, movie) {
   //   if(err) {
   //       return console.error(err);
@@ -79,19 +80,14 @@ router.get("/", (req, res) => {
   //       return console.log('Movie not found!');
   //   }
   //   });
-
 });
 
-router.post("/", (req, res) => {
-  if (!req.body.text) {
+app.post("/", (req, res) => {
+  if (!req.body) {
     res.status(400).json({ error: 'Invalid Request: No input in POST body' });
     return;
   }
   // const user = req.body.user ? req.body.user : res.status(400).json({ error: 'Invalid User' });
-  const post = {
-    text: req.body.text
-  }
-  console.log(post);
 });
 
 app.listen(PORT, () => {

@@ -14,5 +14,11 @@ module.exports = (knex) => {
     });
   });
 
+  // Insert new item into db
+  router.post("/", (req, res) => {
+    knex
+      .insert
+  });
+
   return router;
 }
