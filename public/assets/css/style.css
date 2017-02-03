@@ -62,7 +62,7 @@ a {
 	outline: none;
 }
 
-a{
+a {
 	color: #4da7ca;
 	-o-transition: all .4s;
 	-ms-transition: all .4s;
@@ -76,7 +76,7 @@ a:hover {
 }
 
 
-h1, h2, h3, h4, h5, h6{		
+h1, h2, h3, h4, h5, h6{
 	margin: 0 0 15px 0;
 	color: #3A4F52;
 	font-family: 'Alegreya Sans';
@@ -166,6 +166,7 @@ h1, h2, h3, h4, h5, h6{
 #header .logo, #header .toggleDrawer{
 	font-family: 'Alegreya SC';
 	color: white;
+	font-size: xx-large;
 }
 
 #header .slogan{
