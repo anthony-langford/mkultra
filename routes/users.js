@@ -6,7 +6,6 @@ const router  = express.Router();
 module.exports = (knex) => {
 
   router.post("/save", (req, res) => {
-    debugger;
     let data = {
       title: req.body.title,
       year: req.body.year,

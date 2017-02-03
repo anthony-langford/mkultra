@@ -11,4 +11,16 @@ body {
     background-color: white;
     z-index: 1;
   }
+
+  .addItem {
+    .inputItem {
+      display: block;
+      margin: 5px;
+    }
+
+    .inputComment {
+      display: block;
+      margin: 5px;
+    }
+  }
 }

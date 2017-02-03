@@ -13,7 +13,7 @@ $(document).ready(function() {
         data: data,
         success: () => {
           console.log("Successfully saved search to db");
-        }
+        },
         error: () => {
           console.log("Failed to save search to db");
         }
@@ -21,31 +21,33 @@ $(document).ready(function() {
     };
 
     let getImdbItem = (itemName) => {
-      $.ajax({
-        method: "GET",
-        url: "/imdb",
-        data: itemName,
-        success: (itemData) => {
-          console.log("Successful iMDB API request");
-          $("<div>").text(itemData.title + " " + itemData.year + " " + itemData.genres + " " + itemData.imdb.rating).appendTo($(".addItem"));
-          newItem = {
-            title: itemData.title,
-            year: itemData.year,
-            rating: itemData.imdb.rating,
-            poster: itemData.poster,
-            genres: itemData.genres,
-            rated: itemData.rated,
-            director: itemData.director,
-            runtime: itemData.runtime,
-            plot: itemData.plot,
-            date: Date.now()
+      return new Promise((resolve, reject) => {
+        $.ajax({
+          method: "GET",
+          url: "/imdb",
+          data: itemName,
+          success: (itemData) => {
+            console.log("Successful iMDB API request");
+            newItem = {
+              title: itemData.title,
+              year: itemData.year,
+              rating: itemData.imdb.rating,
+              poster: itemData.poster,
+              genres: itemData.genres,
+              rated: itemData.rated,
+              director: itemData.director,
+              runtime: itemData.runtime,
+              plot: itemData.plot,
+              date: Date.now()
+            }
+            userItems.push(newItem);
+            saveNewMovie(newItem);
+            resolve(itemData);
+          },
+          error: () => {
+            console.log("Failed iMDB API request");
           }
-          userItems.push(newItem);
-          saveNewMovie(newItem);
-        }
-        error: () => {
-          console.log("Failed iMDB API request");
-        }
+        });
       });
     };
 
@@ -57,26 +59,52 @@ $(document).ready(function() {
         success: () => {
           console.log("Successfully saved movie to db");
           // append new html element
-        }
+        },
         error: () => {
           console.log("Failed to save movie to db");
         }
       });
     };
 
+    function createMovieItem(movie, comment, date) {
+      return `<article class="movie">
+        <header>
+          <h2 class="title">${movie.title}</h2>
+          <h3 class="rating">${movie.imdb.rating}/10</h3>
+          <p class="comment">- ${comment}</p>
+        </header>
+        <div class="container">
+          <img class="poster" src=${movie.poster}>
+          <div class="flex">
+            <div class="genres">Genre(s): ${movie.genres}</div>
+            <div class="rated">Rated: ${movie.rated}</div>
+            <div class="director">Director(s): ${movie.director}</div>
+            <div class="year">Year: ${movie.year}</div>
+            <div class="runtime">Runtime: ${movie.runtime} mins</div>
+            <div class="plot">Plot:<br>${movie.plot}</div>
+          </div>
+          <footer>Item added on ${Date(date)}</footer>
+        </div>
+        <div class="bottom"></div>
+      </article>`
+    }
+
   // Submit item and send GET req to oMDB to scrape for item data, then POST to save data to db
   $(function() {
-    let newItemButton = $(".addItem input");
+    let newItemButton = $(".addItemBtn");
 
     newItemButton.click(function() {
       event.preventDefault();
 
-      let searchValue = $(".addItem textarea").val();
-      let itemName = $(".addItem form").serialize();
+      // let searchValue = $(".inputItem").val();
+      // let itemName = $(".addItem form").serialize();
+
+      let userInput = { itemName: $(".inputItem").serialize(),
+                        inputComment: $(".inputComment").val()}
       console.log("Submit item button clicked, performing Ajax call...");
 
       // Check for empty form and return alert error
-      if (itemName === "text=") {
+      if (userInput.itemName === "text=") {
         console.log("Empty form");
         if ($("alert")) {
           $("alert").remove();
@@ -91,11 +119,19 @@ $(document).ready(function() {
       } else {
         if ($("alert")) {
           $("alert").remove();
-          saveSearch(searchValue, userid);
-          getImdbItem(itemName);
+          saveSearch(userInput.itemName, userid);
+          getImdbItem(userInput.itemName)
+          .then((movieData) => {
+            let movieItem = createMovieItem(movieData, userInput.inputComment, Date.now());
+            $(".movieList").append(movieItem);
+          })
         } else {
-          saveSearch(searchValue, userid);
-          getImdbItem(itemName);
+          saveSearch(userInput.itemName, userid);
+          getImdbItem(userInput.itemName)
+          .then((movieData) => {
+            let movieItem = createMovieItem(movieData, userInput.inputComment, Date.now());
+            $(".movieList").append(movieItem);
+          })
         }
       }
     });
@@ -103,4 +139,14 @@ $(document).ready(function() {
   // getUsers();
   });
 
+});
+
+$(function() {
+  $(".movieList").on("click", '.movie', function() {
+    if ($(this).children('.container').css('display') === 'none') {
+      $(this).children('.container').css('display', 'block');
+    } else {
+      $(this).children('.container').css('display', 'none');
+    }
+  });
 });

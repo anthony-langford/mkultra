@@ -46,16 +46,6 @@ app.get("/", (req, res) => {
 
 // Get item data from iMDB
 app.get("/imdb", (req, res) => {
-  // knex
-  //   .select("*")
-  //   .from("users")
-  //   .leftJoin("useritems", "users.id", "useritems.user_id")
-  //   .leftJoin("items", "items.id", "useritems.item_id")
-  //   .then((useritem) => {
-  //     console.log(useritem);
-  //     res.json(useritem);
-  //   });
-
   omdb.get({ title: req.query.text }, true, (err, itemData) => {
     if(err) {
         return console.log(err);
