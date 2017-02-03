@@ -15,6 +15,7 @@
 
   <!-- google fonts -->
   <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=PT+Sans'>
+  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans:600'>
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid+Serif:regular,bold"/>
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Alegreya+Sans:regular,italic,bold,bolditalic"/>
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nixie+One:regular,italic,bold,bolditalic"/>
@@ -25,6 +26,7 @@
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/font-awesome.min.css">
   <link rel="stylesheet" href="assets/css/style.css" media="screen"/>
+  <link rel="stylesheet" href="assets/css/login.css">
   <link rel="stylesheet" href="assets/css/layout.css">
   <link rel="stylesheet" href="assets/css/custom.css">
   <!-- <link rel="stylesheet" href="assets/css/login.css" -->
@@ -50,7 +52,6 @@
   </div>
 
   <div id="wrapper">
-
     <div id="header" class="content-block header-wrapper">
       <div class="header-wrapper-inner">
         <section class="top clearfix">
@@ -59,63 +60,81 @@
             <a class="logo" href="index.html">A Top-Notch To-Do App</a>
             <a class="toggleDrawer pull-right" href="#"><i class="fa fa-bars"></i></a>
           </div>
-      </section>
-      <section class="center">
-        <div class="slogan">
-          Procrastinate Proactively
-        </div>
-      </section>
-      <section class="bottom">
-        <a id="scrollToContent" href="#">
-          <img src="assets/images/arrow_down.png">
-        </a>
-      </section>
+        </section>
+        <section class="center">
+          <div class="slogan">
+            Procrastinate Proactively
+          </div>
+        </section>
+        <section class="bottom">
+          <a id="scrollToContent" href="#">
+            <img src="assets/images/arrow_down.png">
+          </a>
+        </section>
+      </div>
     </div>
-  </div>
 
-  <!-- <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="pr-wrap">
-          <div class="pass-reset">
-            <label>
-              Enter the email you signed up with</label>
-              <input type="email" placeholder="Email" />
-              <input type="submit" value="Submit" class="pass-reset-submit btn btn-success btn-sm" />
+    <div class="content-block" id="portfolio">
+      <div class="container">
+        <div class="login-wrap">
+          <div class="login-html">
+        <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+        <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+        <div class="login-form">
+          <div class="sign-in-htm">
+            <div class="group">
+              <label for="user" class="label">Username</label>
+              <input id="user" type="text" class="input">
+            </div>
+            <div class="group">
+              <label for="pass" class="label">Password</label>
+              <input id="pass" type="password" class="input" data-type="password">
+            </div>
+            <div class="group">
+              <input id="check" type="checkbox" class="check" checked>
+              <label for="check"><span class="icon"></span>Keep me Signed in</label>
+            </div>
+            <div class="group">
+              <input type="submit" class="button" value="Sign In">
+            </div>
+            <div class="hr"></div>
+            <div class="foot-lnk">
+              <a href="#forgot">Forgot Password?</a>
             </div>
           </div>
-          <div class="wrap">
-            <p class="form-title">
-              Sign In</p>
-              <form class="login">
-                <input type="text" placeholder="Username" />
-                <input type="password" placeholder="Password" />
-                <input type="submit" value="Sign In" class="btn btn-success btn-sm" />
-                <div class="remember-forgot">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" />
-                          Remember Me
-                        </label>
-                      </div>
-                    </div>
-                    <div class="col-md-6 forgot-pass-content">
-                      <a href="javascript:void(0)" class="forgot-pass">Forgot Password</a>
-                    </div>
-                  </div>
-                </div>
-              </form>
+          <div class="sign-up-htm">
+            <div class="group">
+              <label for="user" class="label">Username</label>
+              <input id="user" type="text" class="input">
+            </div>
+            <div class="group">
+              <label for="pass" class="label">Password</label>
+              <input id="pass" type="password" class="input" data-type="password">
+            </div>
+            <div class="group">
+              <label for="pass" class="label">Repeat Password</label>
+              <input id="pass" type="password" class="input" data-type="password">
+            </div>
+            <div class="group">
+              <label for="pass" class="label">Email Address</label>
+              <input id="pass" type="text" class="input">
+            </div>
+            <div class="group">
+              <input type="submit" class="button" value="Sign Up">
+            </div>
+            <div class="hr"></div>
+            <div class="foot-lnk">
+              <label for="tab-1">Already Registered?</a>
+              </div>
             </div>
           </div>
         </div>
-      </div> -->
+      </div>
 
       <div class="content-block" id="portfolio">
         <div class="container">
           <header class="center" "block-heading cleafix">
-            <h1 align="center">Add Some Movies, Products, and Films to Your List:</h1>
+            <h1 align="center">Add Some Movies, Books, and Restaurants to Your List:</h1>
           </header>
           <section class="block-body">
             <div class="container text-center">
@@ -144,8 +163,8 @@
                   <a class="panel-heading accordion-toggle collapsed left " data-toggle="collapse" data-parent="#accordion1,#accordion2,#accordion3"
                   data-target="#collapseThree">
                   <div id="bu3">
-                    <img alt="" src="/icons/cart.png" class="img-fluid imgtransform">
-                    <div class="title">Products</div>
+                    <img alt="" src="/icons/book.png" class="img-fluid imgtransform">
+                    <div class="title">Books</div>
                   </div>
                 </a>
               </div>
@@ -182,7 +201,7 @@
                       <img src="https://s6.postimg.org/50w2vzj01/slider_down_Arrow.png">
                     </div>
                     <div>
-                      <p style="color: mediumturquoise">Your Added Products</p>
+                      <p style="color: mediumturquoise">Your Added Books</p>
                     </div>
                   </div>
                 </div>
@@ -193,124 +212,7 @@
       </div>
     </section>
   </div>
-</div><!-- #portfolio -->
-
-<div class="content-block parallax" id="services">
-  <div class="container text-center">
-    <header class="block-heading cleafix">
-      <h1>Our Services</h1>
-      <p>A little about what we do</p>
-    </header>
-    <section class="block-body">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="service">
-            <i class="fa fa-send-o"></i>
-            <h2>Illustration</h2>
-            <p>In at accumsan risus. Nam id volutpat ante. Etiam vel mi mattis, vulputate nunc nec, sodales nibh. Etiam nulla magna, gravida eget ultricies sit amet, hendrerit in lorem.</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="service">
-            <i class="fa fa-heart-o"></i>
-            <h2>3D Modeling</h2>
-            <p>In at accumsan risus. Nam id volutpat ante. Etiam vel mi mattis, vulputate nunc nec, sodales nibh. Etiam nulla magna, gravida eget ultricies sit amet, hendrerit in lorem.</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="service">
-            <i class="fa fa-camera-retro"></i>
-            <h2>Photography</h2>
-            <p>In at accumsan risus. Nam id volutpat ante. Etiam vel mi mattis, vulputate nunc nec, sodales nibh. Etiam nulla magna, gravida eget ultricies sit amet, hendrerit in lorem.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-</div><!-- #services -->
-
-
-<div class="content-block" id="blog">
-  <div class="container">
-    <header class="block-heading cleafix">
-      <a href="#" class="btn btn-o btn-lg pull-right">View All</a>
-      <h1>From the Blog</h1>
-      <p>Keep up with the latest happenings.</p>
-    </header>
-    <section class="block-body">
-      <div class="row">
-        <div class="col-sm-4 blog-post">
-          <img src="assets/images/bike_water1-1000x600.jpg">
-          <a href="#"><h2>Design Your Mind</h2></a>
-          <div class="date">3 Nov, 2014</div>
-          <p>In at accumsan risus. Nam id volutpat ante. Etiam vel mi mattis, vulputate nunc nec, sodales nibh. Etiam nulla magna, gravida eget ultricies sit amet, hendrerit in lorem.</p>
-          <a href="">Read More</a>
-        </div>
-        <div class="col-sm-4 blog-post">
-          <img src="assets/images/mac_glasses1-1000x600.jpg">
-          <a href="#"><h2>Winter Is Comming</h2></a>
-          <div class="date">3 Nov, 2014</div>
-          <p>In at accumsan risus. Nam id volutpat ante. Etiam vel mi mattis, vulputate nunc nec, sodales nibh. Etiam nulla magna, gravida eget ultricies sit amet, hendrerit in lorem.</p>
-          <a href="">Read More</a>
-        </div>
-        <div class="col-sm-4 blog-post">
-          <img src="assets/images/road-1000x600.jpg">
-          <a href="#"><h2>The Illustration</h2></a>
-          <div class="date">3 Nov, 2014</div>
-          <p>In at accumsan risus. Nam id volutpat ante. Etiam vel mi mattis, vulputate nunc nec, sodales nibh. Etiam nulla magna, gravida eget ultricies sit amet, hendrerit in lorem.</p>
-          <a href="">Read More</a>
-        </div>
-      </div>
-    </section>
-  </div>
-</div><!-- #blog -->
-
-
-<div class="content-block parallax" id="parallax">
-  <div class="container text-center">
-    <h1>In at accumsan risus. Nam id volutpat ante. Etiam vel mi mattis, vulputate nunc nec, sodales nibh. Etiam nulla magna, gravida eget ultricies sit amet, hendrerit.</h1>
-    <a href="" class="btn btn-o-white btn-lg">Get a free quote</a>
-  </div>
-</div><!-- #parallax -->
-
-<div class="content-block" id="testimonials">
-  <div class="container">
-    <header class="block-heading cleafix">
-      <h1>Testimonials</h1>
-      <p>Some happy customers have to say.</p>
-    </header>
-    <section class="block-body">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="testimonial">
-            <img src="assets/images/testimonial_31-190x190.jpg">
-            <p>In at accumsan risus. Nam id volutpat ante. Etiam vel mi mattis, vulputate nunc nec, sodales nibh. Etiam nulla magna, gravida eget ultricies sit amet, hendrerit in lorem.</p>
-            <strong>Jhon Doe</strong><br/>
-            <span>Head of Ideas, Technext</span>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="testimonial">
-            <img src="assets/images/testimonial_11-190x190.jpg">
-            <p>In at accumsan risus. Nam id volutpat ante. Etiam vel mi mattis, vulputate nunc nec, sodales nibh. Etiam nulla magna, gravida eget ultricies sit amet, hendrerit in lorem.</p>
-            <strong>Jane Doe</strong><br/>
-            <span>CEO, Apple Inc</span>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="testimonial">
-            <img src="assets/images/testimonial_22-190x190.jpg">
-            <p>In at accumsan risus. Nam id volutpat ante. Etiam vel mi mattis, vulputate nunc nec, sodales nibh. Etiam nulla magna, gravida eget ultricies sit amet, hendrerit in lorem.</p>
-            <strong>Albert Doe</strong><br/>
-            <span>Team Lead, Design Studio</span>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-</div><!-- /#testimonials -->
-
-
+</div>
 
 <script src="assets/js/jquery-2.1.3.min.js"></script>
 <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
