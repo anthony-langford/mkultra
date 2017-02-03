@@ -4,8 +4,8 @@ $(document).ready(function() {
   let userItems = [];
   let newItem = {};
 
-  let saveSearch = (searchValue, userid) => {
-      let data = {searchValue: searchValue, comment: "I AM A COMMENT", user_id: userid };
+  let saveSearch = (userInput, userid) => {
+      let data = {searchValue: userInput.itemName, comment: userInput.inputComment, user_id: userid };
       console.log(data);
       $.ajax({
         method: "POST",
@@ -119,14 +119,14 @@ $(document).ready(function() {
       } else {
         if ($("alert")) {
           $("alert").remove();
-          saveSearch(userInput.itemName, userid);
+          saveSearch(userInput, userid);
           getImdbItem(userInput.itemName)
           .then((movieData) => {
             let movieItem = createMovieItem(movieData, userInput.inputComment, Date.now());
             $(".movieList").append(movieItem);
           })
         } else {
-          saveSearch(userInput.itemName, userid);
+          saveSearch(userInput, userid);
           getImdbItem(userInput.itemName)
           .then((movieData) => {
             let movieItem = createMovieItem(movieData, userInput.inputComment, Date.now());
