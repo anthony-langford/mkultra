@@ -5,7 +5,6 @@ $(document).ready(function() {
 
   // Submit item and send GET req to oMDB to scrape for item data, then POST to save data to db
   $(function() {
-    let newItemButton = $(".addItem .addItemBtn");
 
     let post = (newItem) => {
       // let data = { item: newItem, comment: "sdfsfafaf" }
@@ -33,7 +32,6 @@ $(document).ready(function() {
           }
         });
       })
-
     }
 
     function createMovieItem(movie, comment, date) {
@@ -72,6 +70,7 @@ $(document).ready(function() {
     //         date: Date.now()
     //       }
 
+    let newItemButton = $(".addItem .addItemBtn");
     newItemButton.click(function() {
       event.preventDefault();
 
@@ -115,15 +114,21 @@ $(document).ready(function() {
           })
         }
       }
-
-      // $("<div>").text(itemData.title + " " + itemData.year + " " + itemData.genres + " " + itemData.imdb.rating).appendTo($(".addItem"));
-
-
           // userItems.push(newItem);
           // post(newItem);
     });
-
   // getUsers();
+  });
+});
+
+$(function() {
+  $(".movieList").on("click", '.movie', function() {
+    if ($(this).children('.container').css('display') === 'none') {
+      $(this).children('.container').css('display', 'block');
+    } else {
+      $(this).children('.container').css('display', 'none');
+    }
   });
 
 });
+
