@@ -51,6 +51,37 @@ $(document).ready(function() {
       });
     };
 
+    let getYelpItem = (itemName) => {
+      return new Promise((resolve, reject) => {
+        $.ajax({
+          method: "GET",
+          url: "/yelp",
+          data: itemName,
+          success: (itemData) => {
+            console.log("Successful Yelp API request");
+            // newItem = {
+              // title: itemData.title,
+              // year: itemData.year,
+              // rating: itemData.imdb.rating,
+              // poster: itemData.poster,
+              // genres: itemData.genres,
+              // rated: itemData.rated,
+              // director: itemData.director,
+              // runtime: itemData.runtime,
+              // plot: itemData.plot,
+              // date: Date.now()
+            }
+            userItems.push(newItem);
+            saveNewRestaurant(newItem);
+            resolve(itemData);
+          },
+          error: () => {
+            console.log("Failed Yelp API request");
+          }
+        });
+      });
+    };
+
     let saveNewMovie = (newItem) => {
       $.ajax({
         method: "POST",
@@ -125,12 +156,22 @@ $(document).ready(function() {
             let movieItem = createMovieItem(movieData, userInput.inputComment, Date.now());
             $(".movieList").append(movieItem);
           })
+          getYelpItem(userInput.itemName)
+          .then((restaurantData) => {
+            let restaurantItem = createRestaurantItem(restaurantData, userInput.inputComment, Date.now());
+            $(".restaurantList").append(restaurantItem);
+          })
         } else {
           saveSearch(userInput, userid);
           getImdbItem(userInput.itemName)
           .then((movieData) => {
             let movieItem = createMovieItem(movieData, userInput.inputComment, Date.now());
             $(".movieList").append(movieItem);
+          })
+          getYelpItem(userInput.itemName)
+          .then((restaurantData) => {
+            let restaurantItem = createRestaurantItem(restaurantData, userInput.inputComment, Date.now());
+            $(".restaurantList").append(restaurantItem);
           })
         }
       }

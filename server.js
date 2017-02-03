@@ -14,6 +14,8 @@ const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 const omdb        = require('omdb');
+const yelp        = require('yelp');
+zomato api key d4fcd0f211f8e3a97fc0197a402b6cf5
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
@@ -57,6 +59,14 @@ app.get("/imdb", (req, res) => {
     console.log(itemData);
     res.json(itemData);
   });
+});
+
+app.get("/yelp", (req, res) => {
+  yelp.search({ term: req.query.text })
+    .then((data) => {
+      console.log(data);
+      // res.json()
+    }
 });
 
 app.post("/", (req, res) => {
