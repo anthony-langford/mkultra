@@ -21,20 +21,23 @@ $(document).ready(function() {
     }
 
     function getImdbItem(itemName) {
-      $.ajax({
-        method: "GET",
-        url: "/imdb",
-        data: itemName,
-        success: (itemData) => {
-          console.log("Successful iMDB API request")
-          console.log(itemData);
-          return itemData;
-        }
-      });
+      return new Promise((resolve, reject) => {
+        $.ajax({
+          method: "GET",
+          url: "/imdb",
+          data: itemName,
+          success: (itemData) => {
+            console.log("Successful iMDB API request")
+            console.log(itemData);
+            resolve(itemData);
+          }
+        });
+      })
+
     }
 
     function createMovieItem(movie, comment, date) {
-      return `<article class="movies">
+      return `<article class="movie">
         <header>
           <h2 class="title">${movie.title}</h2>
           <h3 class="rating">${movie.imdb.rating}/10</h3>
@@ -50,7 +53,7 @@ $(document).ready(function() {
             <div class="runtime">Runtime: ${movie.runtime} mins</div>
             <div class="plot">Plot:<br>${movie.plot}</div>
           </div>
-          <footer>Item added on ${date}</footer>
+          <footer>Item added on ${Date(date)}</footer>
         </div>
         <div class="bottom"></div>
       </article>`
@@ -97,17 +100,24 @@ $(document).ready(function() {
       } else {
         if ($("alert")) {
           $("alert").remove();
-          return (movieData = getImdbItem(userInput.itemName));
+          getImdbItem(userInput.itemName)
+          .then((movieData) => {
+            console.log(movieData);
+            let movieItem = createMovieItem(movieData, userInput.inputComment, Date.now());
+            $(".movieList").append(movieItem);
+          })
         } else {
-          return (movieData = getImdbItem(userInput.itemName));
+          getImdbItem(userInput.itemName)
+          .then((movieData) => {
+            console.log(movieData);
+            let movieItem = createMovieItem(movieData, userInput.inputComment, Date.now());
+            $(".movieList").append(movieItem);
+          })
         }
-        //this isn't console logging! how do i pass movieData from there^^^ to therevvvv
-        console.log(movieData);
       }
-      console.log(movieData);
-      let movieItem = createMovieItem(movieData, userInput.inputComment, Date.now());
+
       // $("<div>").text(itemData.title + " " + itemData.year + " " + itemData.genres + " " + itemData.imdb.rating).appendTo($(".addItem"));
-      $(".movieList").append(movieItem);
+
 
           // userItems.push(newItem);
           // post(newItem);

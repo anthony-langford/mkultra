@@ -31,6 +31,8 @@ section.userLists {
       }
 
       .container {
+        position: relative;
+        min-height: 253px;
 
         img.poster {
           float: left;
@@ -84,7 +86,7 @@ section.userLists {
             padding: 5px;
             order: 6;
             flex-grow: 1;
-            margin: 2px;
+            margin: 2px 2px 26px;
           }
         }
 
@@ -92,6 +94,9 @@ section.userLists {
         background-color: #a7c7f9;
         padding-top: 5px;
         text-align: center;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
         }
       }
 
