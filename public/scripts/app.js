@@ -121,6 +121,7 @@ $(document).ready(function() {
   });
 });
 
+// show/hide the movie details by clicking on the movie item
 $(function() {
   $(".movieList").on("click", '.movie', function() {
     if ($(this).children('.container').css('display') === 'none') {
