@@ -1,0 +1,35 @@
+users
+  id (PK)
+  email
+  name
+
+searches
+  title
+  comment
+  user_id
+  movie_id
+  book_id
+  restaurant_id
+
+movies
+  id
+  title
+  year
+  rating
+  poster
+  genres
+  rated
+  director
+  runtime
+  plot
+  date
+books
+  id
+  title
+  author
+  description
+restaurants
+  id
+  title
+  location
+  description

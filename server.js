@@ -55,31 +55,18 @@ app.get("/imdb", (req, res) => {
   //     console.log(useritem);
   //     res.json(useritem);
   //   });
-  console.log(1234, req.query.text);
 
   omdb.get({ title: req.query.text }, true, (err, itemData) => {
     if(err) {
-        return console.error(err);
+        return console.log(err);
     }
 
-    if(!item) {
+    if(!itemData) {
         return console.log('Item not found!');
     }
-
-    // console.log(item);
+    console.log(itemData);
     res.json(itemData);
   });
-
-  // Get streamable .jpeg poster from iMDB and return both movie and img url (use promises?)
-  // omdb.poster({ title: 'Saw' }, true, function(err, movie) {
-  //   if(err) {
-  //       return console.error(err);
-  //   }
-
-  //   if(!movie) {
-  //       return console.log('Movie not found!');
-  //   }
-  //   });
 });
 
 app.post("/", (req, res) => {

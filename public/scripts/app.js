@@ -1,24 +1,24 @@
 $(document).ready(function() {
 
-  let userid = "";
+  let userid = 1;
   let userItems = [];
+  let newItem = {};
 
-  // Submit item and send GET req to oMDB to scrape for item data, then POST to save data to db
-  $(function() {
-    let newItemButton = $(".addItem input");
-
-    let post = (newItem) => {
-      // let data = { item: newItem, comment: "sdfsfafaf" }
+  let saveSearch = (searchValue, userid) => {
+      let data = {searchValue: searchValue, comment: "I AM A COMMENT", user_id: userid };
+      console.log(data);
       $.ajax({
-        url: "/api/users",
-        type: "POST",
+        method: "POST",
+        url: "/api/users/search",
         data: data,
-        success: (newItem) => {
-          console.log("Successful db entry");
-          // append new html element
+        success: () => {
+          console.log("Successfully saved search to db");
+        }
+        error: () => {
+          console.log("Failed to save search to db");
         }
       });
-    }
+    };
 
     let getImdbItem = (itemName) => {
       $.ajax({
@@ -26,33 +26,53 @@ $(document).ready(function() {
         url: "/imdb",
         data: itemName,
         success: (itemData) => {
-          console.log("Successful iMDB API request")
+          console.log("Successful iMDB API request");
           $("<div>").text(itemData.title + " " + itemData.year + " " + itemData.genres + " " + itemData.imdb.rating).appendTo($(".addItem"));
-          let date = Date.now();
-          const newItem = {
+          newItem = {
             title: itemData.title,
             year: itemData.year,
             rating: itemData.imdb.rating,
-            // comment: itemData.,
             poster: itemData.poster,
-            genre: itemData.genres,
+            genres: itemData.genres,
             rated: itemData.rated,
             director: itemData.director,
-            length: itemData.runtime,
+            runtime: itemData.runtime,
             plot: itemData.plot,
-            date: date,
+            date: Date.now()
           }
           userItems.push(newItem);
-          post(newItem);
+          saveNewMovie(newItem);
+        }
+        error: () => {
+          console.log("Failed iMDB API request");
         }
       });
-    }
+    };
+
+    let saveNewMovie = (newItem) => {
+      $.ajax({
+        method: "POST",
+        url: "/api/users/save",
+        data: newItem,
+        success: () => {
+          console.log("Successfully saved movie to db");
+          // append new html element
+        }
+        error: () => {
+          console.log("Failed to save movie to db");
+        }
+      });
+    };
+
+  // Submit item and send GET req to oMDB to scrape for item data, then POST to save data to db
+  $(function() {
+    let newItemButton = $(".addItem input");
 
     newItemButton.click(function() {
       event.preventDefault();
 
+      let searchValue = $(".addItem textarea").val();
       let itemName = $(".addItem form").serialize();
-      console.log(itemName);
       console.log("Submit item button clicked, performing Ajax call...");
 
       // Check for empty form and return alert error
@@ -71,8 +91,10 @@ $(document).ready(function() {
       } else {
         if ($("alert")) {
           $("alert").remove();
+          saveSearch(searchValue, userid);
           getImdbItem(itemName);
         } else {
+          saveSearch(searchValue, userid);
           getImdbItem(itemName);
         }
       }
