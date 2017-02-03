@@ -5,7 +5,7 @@ $(document).ready(function() {
 
   // Submit item and send GET req to oMDB to scrape for item data, then POST to save data to db
   $(function() {
-    let newItemButton = $(".addItem input");
+    let newItemButton = $(".addItem .addItemBtn");
 
     let post = (newItem) => {
       // let data = { item: newItem, comment: "sdfsfafaf" }
@@ -20,43 +20,69 @@ $(document).ready(function() {
       });
     }
 
-    let getImdbItem = (itemName) => {
+    function getImdbItem(itemName) {
       $.ajax({
         method: "GET",
         url: "/imdb",
         data: itemName,
         success: (itemData) => {
           console.log("Successful iMDB API request")
-          $("<div>").text(itemData.title + " " + itemData.year + " " + itemData.genres + " " + itemData.imdb.rating).appendTo($(".addItem"));
-          let date = Date.now();
-          const newItem = {
-            title: itemData.title,
-            year: itemData.year,
-            rating: itemData.imdb.rating,
-            // comment: itemData.,
-            poster: itemData.poster,
-            genre: itemData.genres,
-            rated: itemData.rated,
-            director: itemData.director,
-            length: itemData.runtime,
-            plot: itemData.plot,
-            date: date,
-          }
-          userItems.push(newItem);
-          post(newItem);
+          console.log(itemData);
+          return itemData;
         }
       });
     }
 
+    function createMovieItem(movie, comment, date) {
+      return `<article class="movies">
+        <header>
+          <h2 class="title">${movie.title}</h2>
+          <h3 class="rating">${movie.imdb.rating}/10</h3>
+          <p class="comment">- ${comment}</p>
+        </header>
+        <div class="container">
+          <img class="poster" src=${movie.poster}>
+          <div class="flex">
+            <div class="genres">Genre(s): ${movie.genres}</div>
+            <div class="rated">Rated: ${movie.rated}</div>
+            <div class="director">Director(s): ${movie.director}</div>
+            <div class="year">Year: ${movie.year}</div>
+            <div class="runtime">Runtime: ${movie.runtime} mins</div>
+            <div class="plot">Plot:<br>${movie.plot}</div>
+          </div>
+          <footer>Item added on ${date}</footer>
+        </div>
+        <div class="bottom"></div>
+      </article>`
+    }
+    // const newItem = {
+    //         title: itemData.title,
+    //         year: itemData.year,
+    //         rating: itemData.imdb.rating,
+    //         comment: userInput.inputComment,
+    //         poster: itemData.poster,
+    //         genre: itemData.genres,
+    //         rated: itemData.rated,
+    //         director: itemData.director,
+    //         length: itemData.runtime,
+    //         plot: itemData.plot,
+    //         date: Date.now()
+    //       }
+
     newItemButton.click(function() {
       event.preventDefault();
 
-      let itemName = $(".addItem form").serialize();
-      console.log(itemName);
+      // let itemName = $(".addItem .inputItem").serialize();
+      // let inputComment = $(".addItem .inputComment").val();
+      let userInput = { itemName: $(".addItem .inputItem").serialize(),
+                        inputComment: $(".addItem .inputComment").val()}
+      // console.log(itemName);
+      // console.log(inputComment);
+      console.log(userInput);
       console.log("Submit item button clicked, performing Ajax call...");
 
       // Check for empty form and return alert error
-      if (itemName === "text=") {
+      if (userInput.itemName === "text=") {
         console.log("Empty form");
         if ($("alert")) {
           $("alert").remove();
@@ -64,18 +90,27 @@ $(document).ready(function() {
           $(".addItem").addClass("alert").append(alert);
           return;
         } else {
-          let alert = $("<alert>").addClass("alert").text("You can't send an empty tweet!");
+          let alert = $("<alert>").addClass("alert").text("Write something dummy!");
           $(".addItem").addClass("alert").append(alert);
           return;
         }
       } else {
         if ($("alert")) {
           $("alert").remove();
-          getImdbItem(itemName);
+          return (movieData = getImdbItem(userInput.itemName));
         } else {
-          getImdbItem(itemName);
+          return (movieData = getImdbItem(userInput.itemName));
         }
+        //this isn't console logging! how do i pass movieData from there^^^ to therevvvv
+        console.log(movieData);
       }
+      console.log(movieData);
+      let movieItem = createMovieItem(movieData, userInput.inputComment, Date.now());
+      // $("<div>").text(itemData.title + " " + itemData.year + " " + itemData.genres + " " + itemData.imdb.rating).appendTo($(".addItem"));
+      $(".movieList").append(movieItem);
+
+          // userItems.push(newItem);
+          // post(newItem);
     });
 
   // getUsers();

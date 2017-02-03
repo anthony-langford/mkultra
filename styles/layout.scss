@@ -13,7 +13,12 @@ body {
   }
 
   .addItem {
-    .newItem {
+    .inputItem {
+      display: block;
+      margin: 5px;
+    }
+
+    .inputComment {
       display: block;
       margin: 5px;
     }
