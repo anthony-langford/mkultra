@@ -51,6 +51,40 @@ $(document).ready(function() {
       });
     };
 
+    let getItunesItem = (itemName) => {
+      console.log(itemName);
+      let term = itemName.slice(5).split("%20").join("+");
+      console.log(term);
+      return new Promise((resolve, reject) => {
+        $.ajax({
+          method: "GET",
+          url: `https://itunes.apple.com/search?term=${term}`,
+          success: (itemData) => {
+            console.log("Successful iTunes request");
+            console.log(itemData);
+            // newItem = {
+            //   title: itemData.title,
+            //   year: itemData.year,
+            //   rating: itemData.imdb.rating,
+            //   poster: itemData.poster,
+            //   genres: itemData.genres,
+            //   rated: itemData.rated,
+            //   director: itemData.director,
+            //   runtime: itemData.runtime,
+            //   plot: itemData.plot,
+            //   date: Date.now()
+            // }
+            // userItems.push(newItem);
+            // saveNewSong(newItem);
+            // resolve(itemData);
+          },
+          error: () => {
+            console.log("Failed iMDB API request");
+          }
+        });
+      });
+    };
+
     let saveNewMovie = (newItem) => {
       $.ajax({
         method: "POST",
@@ -120,18 +154,32 @@ $(document).ready(function() {
         if ($("alert")) {
           $("alert").remove();
           saveSearch(userInput, userid);
-          getImdbItem(userInput.itemName)
-          .then((movieData) => {
-            let movieItem = createMovieItem(movieData, userInput.inputComment, Date.now());
-            $(".movieList").append(movieItem);
-          })
+          // getImdbItem(userInput.itemName)
+          // .then((movieData) => {
+          //   let movieItem = createMovieItem(movieData, userInput.inputComment, Date.now());
+          //   $(".movieList").append(movieItem);
+          // })
+
+          // iTunes
+          getItunesItem(userInput.itemName)
+          // .then((songData) => {
+          //   let songItem = createSongItem(songData, userInput.inputComment, Date.now());
+          //   $(".songList").append(songItem);
+          // })
         } else {
           saveSearch(userInput, userid);
-          getImdbItem(userInput.itemName)
-          .then((movieData) => {
-            let movieItem = createMovieItem(movieData, userInput.inputComment, Date.now());
-            $(".movieList").append(movieItem);
-          })
+          // getImdbItem(userInput.itemName)
+          // .then((movieData) => {
+          //   let movieItem = createMovieItem(movieData, userInput.inputComment, Date.now());
+          //   $(".movieList").append(movieItem);
+          // })
+
+          // iTunes
+          getItunesItem(userInput.itemName)
+          // .then((songData) => {
+          //   let songItem = createSongItem(songData, userInput.inputComment, Date.now());
+          //   $(".songList").append(songItem);
+          // })
         }
       }
     });
