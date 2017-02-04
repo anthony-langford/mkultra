@@ -12,6 +12,9 @@
   <!-- scripts -->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+  <script type="text/javascript" src="/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+  <script type="text/javascript" src="/fancybox/jquery.easing-1.4.pack.js"></script>
 
   <!-- google fonts -->
   <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=PT+Sans'>
@@ -26,9 +29,9 @@
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/font-awesome.min.css">
   <link rel="stylesheet" href="assets/css/style.css" media="screen"/>
-  <link rel="stylesheet" href="assets/css/login.css">
   <link rel="stylesheet" href="assets/css/layout.css">
   <link rel="stylesheet" href="assets/css/custom.css">
+  <link rel="stylesheet" href="assets/css/login.css">
   <!-- <link rel="stylesheet" href="assets/css/login.css" -->
 
 </head>
@@ -56,9 +59,9 @@
       <div class="header-wrapper-inner">
         <section class="top clearfix">
           <div class="center">
-            <i class="fa fa-user user-icon pull-left"></i>
+            <i class="fa fa-user user-icon pull-left" href="index.ejs"></i>
             <a class="logo" href="index.ejs">A Top-Notch To-Do App</a>
-            <a class="toggleDrawer pull-right" href="#"><i class="fa fa-bars"></i></a>
+            <a class="toggleDrawer pull-right" href="#"><i class="fa fa-bars" hred="index.ejs"></i></a>
           </div>
         </section>
         <section class="center">
@@ -75,7 +78,7 @@
     </div>
 
 
-    <div class="content-block" id="portfolio">
+    <!-- <div class="content-block" id="portfolio">
       <div class="container">
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
@@ -93,7 +96,7 @@
             <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
           </form>
         </div>
-      </div> <!-- /container -->
+      </div> <!-- /container --> -->
 
   <div class="content-block" id="portfolio">
     <div class="container">
@@ -102,9 +105,9 @@
         <form class="form-search">
           <h2 align="center" class="form-search-heading">Please Enter Your Query</h2>
           <label for="inputSearch" class="sr-only">Search</label>
-          <input type="search" id="inputSearch" class="form-control" placeholder="Search Me!" required autofocus>
+          <input type="text" id="inputSearch" class="form-control" placeholder="Search for any Movie, Song, or Restaurant!" required autofocus>
           <label for="inputComment" class="sr-only">Comment</label>
-          <input type="comment" id="inputComment" class="form-control" placeholder="Feel Free To Add A Comment!" required>
+          <input type="text" id="inputComment" class="form-control" placeholder="Feel Free To Add A Comment!" required autofocus>
           <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
         </form>
       </div>
@@ -113,9 +116,6 @@
   </br>
 
   <div class="container">
-    <header class="center" "block-heading cleafix">
-      <h1 align="center">Add Some Movies, Books, and Restaurants to Your List:</h1>
-    </header>
     <section class="block-body">
       <div class="container text-center">
         <div class="row">
@@ -143,8 +143,8 @@
             <a class="panel-heading accordion-toggle collapsed left " data-toggle="collapse" data-parent="#accordion1,#accordion2,#accordion3"
             data-target="#collapseThree">
             <div id="bu3">
-              <img alt="" src="/icons/book.png" class="img-fluid imgtransform">
-              <div class="title">Books</div>
+              <img alt="" src="/icons/music.png" class="img-fluid imgtransform">
+              <div class="title">Songs</div>
             </div>
           </a>
         </div>
@@ -181,7 +181,7 @@
                 <img src="https://s6.postimg.org/50w2vzj01/slider_down_Arrow.png">
               </div>
               <div>
-                <p style="color: mediumturquoise">Your Added Books</p>
+                <p style="color: mediumturquoise">Your Added Songs</p>
               </div>
             </div>
           </div>
@@ -203,9 +203,10 @@
 <script src="assets/js/jquery-2.1.3.min.js"></script>
 <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/script.js"></script>
 <script src="assets/js/jquery.actual.min.js"></script>
 <script src="assets/js/jquery.scrollTo.min.js"></script>
-<script src="assets/js/script.js"></script>
+
 
 
 </body>
