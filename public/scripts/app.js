@@ -4,6 +4,14 @@ $(document).ready(function() {
   let userItems = [];
   let newItem = {};
 
+  // Send get request to wolfram API (appID is open to public, whatever)
+  let categorizeSearch = (userInput, userid) => {
+    let query = $(.inputItem).serialize().slice(5);
+    console.log(query);
+    let url = "http://api.wolframalpha.com/v2/query?" + query + "&appid=X3LWG7-TY8XGTGR5W&output=json";
+  }
+
+  // Save search to db
   let saveSearch = (userInput, userid) => {
       let data = {searchValue: userInput.itemName, comment: userInput.inputComment, user_id: userid };
       console.log(data);
@@ -20,6 +28,7 @@ $(document).ready(function() {
       });
     };
 
+    // Search IMDB API
     let getImdbItem = (itemName) => {
       return new Promise((resolve, reject) => {
         $.ajax({
@@ -51,6 +60,7 @@ $(document).ready(function() {
       });
     };
 
+    // Save movie to db
     let saveNewMovie = (newItem) => {
       $.ajax({
         method: "POST",
@@ -66,6 +76,7 @@ $(document).ready(function() {
       });
     };
 
+    // Append movie to client list
     function createMovieItem(movie, comment, date) {
       return `<article class="movie">
         <header>
@@ -89,15 +100,12 @@ $(document).ready(function() {
       </article>`
     }
 
-  // Submit item and send GET req to oMDB to scrape for item data, then POST to save data to db
+  // Save search to db, send GET req to oMDB to scrape for item data, and then POST to save data to db
   $(function() {
     let newItemButton = $(".addItemBtn");
 
     newItemButton.click(function() {
       event.preventDefault();
-
-      // let searchValue = $(".inputItem").val();
-      // let itemName = $(".addItem form").serialize();
 
       let userInput = { itemName: $(".inputItem").serialize(),
                         inputComment: $(".inputComment").val()}
