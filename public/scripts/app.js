@@ -51,14 +51,15 @@ $(document).ready(function() {
       });
     };
 
-    let getYelpItem = (itemName) => {
+    let getZomatoItem = (itemName) => {
       return new Promise((resolve, reject) => {
         $.ajax({
           method: "GET",
-          url: "/yelp",
+          url: "/zomato",
           data: itemName,
           success: (itemData) => {
-            console.log("Successful Yelp API request");
+            console.log(itemData);
+            console.log("Successful zomato API request");
             // newItem = {
               // title: itemData.title,
               // year: itemData.year,
@@ -71,12 +72,12 @@ $(document).ready(function() {
               // plot: itemData.plot,
               // date: Date.now()
             }
-            userItems.push(newItem);
-            saveNewRestaurant(newItem);
-            resolve(itemData);
+            // userItems.push(newItem);
+            // saveNewRestaurant(newItem);
+            // resolve(itemData);
           },
           error: () => {
-            console.log("Failed Yelp API request");
+            console.log("Failed zomato API request");
           }
         });
       });
@@ -151,24 +152,24 @@ $(document).ready(function() {
         if ($("alert")) {
           $("alert").remove();
           saveSearch(userInput, userid);
-          getImdbItem(userInput.itemName)
-          .then((movieData) => {
-            let movieItem = createMovieItem(movieData, userInput.inputComment, Date.now());
-            $(".movieList").append(movieItem);
-          })
-          getYelpItem(userInput.itemName)
+          // getImdbItem(userInput.itemName)
+          // .then((movieData) => {
+          //   let movieItem = createMovieItem(movieData, userInput.inputComment, Date.now());
+          //   $(".movieList").append(movieItem);
+          // })
+          getZomatoItem(userInput.itemName)
           .then((restaurantData) => {
             let restaurantItem = createRestaurantItem(restaurantData, userInput.inputComment, Date.now());
             $(".restaurantList").append(restaurantItem);
           })
         } else {
           saveSearch(userInput, userid);
-          getImdbItem(userInput.itemName)
-          .then((movieData) => {
-            let movieItem = createMovieItem(movieData, userInput.inputComment, Date.now());
-            $(".movieList").append(movieItem);
-          })
-          getYelpItem(userInput.itemName)
+          // getImdbItem(userInput.itemName)
+          // .then((movieData) => {
+          //   let movieItem = createMovieItem(movieData, userInput.inputComment, Date.now());
+          //   $(".movieList").append(movieItem);
+          // })
+          getZomatoItem(userInput.itemName)
           .then((restaurantData) => {
             let restaurantItem = createRestaurantItem(restaurantData, userInput.inputComment, Date.now());
             $(".restaurantList").append(restaurantItem);
