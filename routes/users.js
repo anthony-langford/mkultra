@@ -40,13 +40,13 @@ module.exports = (knex) => {
     }
   });
 
-  // router.get("/login", (req, res) => {
-  //   if (req.session.user) {
-  //     res.redirect("/");
-  //   } else {
-  //     res.render("login", { message: req.flash("loginMsg")});
-  //   }
-  // });
+  router.get("/login", (req, res) => {
+    if (req.session.user) {
+      res.redirect("/");
+    } else {
+      res.render("login", { message: req.flash("loginMsg")});
+    }
+  });
 
   router.post("/login", (req, res) => {
     const email = req.body.email;
@@ -64,9 +64,9 @@ module.exports = (knex) => {
         return res.redirect("login");
       } else if (!bcrypt.compareSync(password, result[0].password)){
           req.flash("loginMsg", "The password you entered is incorrect. Please try again");
-          return res.redirect("login");
+          res.redirect("login");
         } else {
-          return res.redirect('/users');
+          res.redirect('/logins');
         }
     })
   });
