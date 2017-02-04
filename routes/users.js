@@ -40,13 +40,13 @@ module.exports = (knex) => {
     }
   });
 
-  router.get("login", (req, res) => {
-    if (req.session.user) {
-      res.redirect("/");
-    } else {
-      res.render("login", { message: req.flash("loginMsg")});
-    }
-  });
+  // router.get("/login", (req, res) => {
+  //   if (req.session.user) {
+  //     res.redirect("/");
+  //   } else {
+  //     res.render("login", { message: req.flash("loginMsg")});
+  //   }
+  // });
 
   router.post("/login", (req, res) => {
     const email = req.body.email;
@@ -71,7 +71,7 @@ module.exports = (knex) => {
     })
   });
 
-  router.get("/register", (req, res) => {
+  router.get("/", (req, res) => {
     if (req.session.user) {
       res.redirect("/");
     }
