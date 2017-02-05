@@ -1,0 +1,71 @@
+section.userLists {
+  .songList {
+    margin: 5px;
+    .song {
+      margin: 10px;
+      border: 1px solid black;
+      border-radius: 5px;
+      width: 500px;
+      header {
+        border-radius: 5px 5px 0 0;
+        background-color: #a7c7f9;
+        padding: 5px 10px 3px;
+        margin: 0;
+        .title {
+          display: inline;
+        }
+        .artist {
+          display: inline;
+          float: right;
+          margin: 5px 0 0 0;
+        }
+        .comment {
+          margin: 0;
+        }
+      }
+      .container {
+        display: none;
+        position: relative;
+        min-height: 253px;
+        img.albumCover {
+          float: left;
+          width: 226px;
+          height: 226px;
+          margin: 2px 2px 0 3px;
+          border: 1px solid black;
+        }
+        .flex {
+          display: flex;
+          flex-wrap: wrap;
+          .album {
+            border: 1px solid black;
+            padding: 5px;
+            order: 1;
+            flex-grow: 1;
+            margin: 2px 2px 0;
+          }
+          .trackNum {
+            border: 1px solid black;
+            padding: 5px;
+            order: 1;
+            flex-grow: 1;
+            margin: 2px 2px 0;
+          }
+        }
+        footer {
+        background-color: #a7c7f9;
+        padding-top: 5px;
+        text-align: center;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        }
+      }
+      .bottom {
+        height: 5px;
+        background-color: #a7c7f9;
+        border-radius: 0 0 5px 5px;
+      }
+    }
+  }
+}

@@ -61,17 +61,6 @@ app.get("/imdb", (req, res) => {
   });
 });
 
-// Get item data from Spotify
-app.get("/spotify", (req, res) => {
-  spotify.searchTracks(req.query.text, function(err, data) {
-    if (err) {
-      console.log("Error: ", err);
-      return
-    }
-    console.log(data);
-  })
-})
-
 app.post("/", (req, res) => {
   if (!req.body) {
     res.status(400).json({ error: 'Invalid Request: No input in POST body' });
