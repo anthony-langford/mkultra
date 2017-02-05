@@ -1,55 +1,279 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="noIE" lang="en-US">
   <head>
-    <title>Smart To-Do List</title>
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/movies.css" type="text/css" />
+    <title>ToDo App</title>
+
+    <!-- meta -->
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no"/>
+
+    <!-- scripts -->
+
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
+
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/jquery.scrollTo.min.js"></script>
+    <script src="assets/js/jquery.actual.min.js"></script>
+    <script src="assets/js/jquery-2.1.3.min.js"></script>
+    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+
+
+    <!-- google fonts -->
+
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=PT+Sans'>
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans:600'>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid+Serif:regular,bold"/>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Alegreya+Sans:regular,italic,bold,bolditalic"/>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nixie+One:regular,italic,bold,bolditalic"/>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Alegreya+SC:regular,italic,bold,bolditalic"/>
+
+    <!-- css -->
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/style.css" media="screen"/>
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="/styles/movies.css" type="text/css" />
+
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <!-- <link rel="stylesheet" href="/styles/layout.css" type="text/css" /> -->
+
+
   </head>
 
+
+
   <body>
-    <nav id="nav-bar">
-      Smart To-Do
-      <button>Register</button>
-      <button>Log In</button>
-    </nav>
-    <h1>Welcome</h1>
+    <div id="drawer-right">
+      <div class="cross text-right">
+        <a class="toggleDrawer" href="#"><i class="fa fa-times-circle fa-2x"></i></a>
+      </div>
+      <h2>Navigate</h2>
+      <nav>
+        <ul class="nav nav-pills nav-stacked">
+          <li>
+            <a href="#wrapper"><i class="fa fa-home"></i>Home</a>
+          </li>
+          <li>
+            <a href="#portfolio"><i class="fa fa-bookmark"></i>User Profile</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
 
-    <section class="addItem">
-      <h2>Add a new item</h2>
-      <form method="POST" action="/api/users">
-        <textarea class="inputItem" name="text" placeholder="type the item you want to add"></textarea>
-        <textarea class="inputComment" name="comment" placeholder="add a comment"></textarea>
-        <input class="addItemBtn" type="submit" name="submit" value="Add">
-      </form>
-    </section>
-
-    <section class="userLists">
-      <section class="movieList">
-        <article class="movie">
-          <header>
-            <h2 class="title">The Toxic Avenger</h2>
-            <h3 class="rating">6.2/10</h3>
-            <p class="comment">- Dylan told me to watch this</p>
-          </header>
-          <div class="container">
-            <img class="poster" src="http://ia.media-imdb.com/images/M/MV5BNzViNmQ5MTYtMmI4Yy00N2Y2LTg4NWUtYWU3MThkMTVjNjk3XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg">
-            <div class="flex">
-              <div class="genres">Genre: Action, Comedy, Horror</div>
-              <div class="rated">Rated: R</div>
-              <div class="director">Director: Michael Herz, Lloyd Kaufman</div>
-              <div class="year">Year: 1984</div>
-              <div class="runtime">Runtime: 82 min</div>
-              <div class="plot">Plot:<br>This is the story of Melvin, the Tromaville Health Club mop boy, who inadvertently and naively trusts the hedonistic, contemptuous and vain health club members, to the point of accidentally ending up in a vat of toxic waste. The devastating results then have a transmogrification effect, his alter ego is released, and the Toxic Avenger is born, to deadly and comical results. The local mop boy is now the local Superhero, the saviour of corruption, thuggish bullies and indifference. Troma classic with good make-up effects and stunts, a pleasant surprise indeed.</div>
+    <div id="wrapper">
+      <div id="header" class="content-block header-wrapper">
+        <div class="header-wrapper-inner">
+          <section class="top clearfix">
+            <div class="center">
+              <i class="fa fa-user user-icon pull-left" href="index.ejs"></i>
+              <a class="logo" href="index.ejs">A Top-Notch To-Do App</a>
+              <a class="toggleDrawer pull-right" href="#"><i class="fa fa-bars" hred="index.ejs"></i></a>
             </div>
-            <footer>Item added on 2017/02/02</footer>
+          </section>
+          <section class="center">
+            <div class="slogan">
+              Procrastinate Proactively
+            </div>
+          </section>
+          <section class="bottom">
+            <a id="scrollToContent" href="#">
+              <img src="assets/images/arrow_down.png">
+            </a>
+          </section>
+        </div>
+      </div>
+
+      <div class="content-block" id="portfolio">
+
+        <div class="container addItem">
+          <div class="col-sm-4"></div>
+          <div class="col-sm-4">
+            <form class="form-search" method="POST" action="/api/users">
+              <h2 align="center" class="form-search-heading">Enter Your Query</h2>
+              <label for="inputSearch" class="sr-only">Search</label>
+              <input type="text" id="inputSearch" class="form-control inputItem" name="text" placeholder="Search a movie, song, or restaurant">
+              <label for="inputComment" class="sr-only">Comment</label>
+              <input type="text" id="inputComment" class="form-control inputComment" name="comment" placeholder="Add a comment">
+              <button class="btn btn-lg btn-primary btn-block addItemBtn" type="submit" name="submit">Submit</button>
+            </form>
           </div>
-          <div class="bottom"></div>
-        </article>
-      </section>
-    </section>
+        </div>
+        <br>
+
+      <!-- <section class="userLists">
+        <section class="movieList">
+          <article class="movie">
+            <header>
+              <h2 class="title">The Toxic Avenger</h2>
+              <h3 class="rating">6.2/10</h3>
+              <p class="comment">- Dylan told me to watch this</p>
+            </header>
+            <div class="container">
+              <img class="poster" src="http://ia.media-imdb.com/images/M/MV5BNzViNmQ5MTYtMmI4Yy00N2Y2LTg4NWUtYWU3MThkMTVjNjk3XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg">
+              <div class="flex">
+                <div class="genres">Genre: Action, Comedy, Horror</div>
+                <div class="rated">Rated: R</div>
+                <div class="director">Director: Michael Herz, Lloyd Kaufman</div>
+                <div class="year">Year: 1984</div>
+                <div class="runtime">Runtime: 82 min</div>
+                <div class="plot">Plot:<br>This is the story of Melvin, the Tromaville Health Club mop boy, who inadvertently and naively trusts the hedonistic, contemptuous and vain health club members, to the point of accidentally ending up in a vat of toxic waste. The devastating results then have a transmogrification effect, his alter ego is released, and the Toxic Avenger is born, to deadly and comical results. The local mop boy is now the local Superhero, the saviour of corruption, thuggish bullies and indifference. Troma classic with good make-up effects and stunts, a pleasant surprise indeed.</div>
+              </div>
+              <footer>Item added on 2017/02/02</footer>
+            </div>
+            <div class="bottom"></div>
+          </article>
+        </section>
+      </section>-->
+
+        <div class="container userLists">
+          <section class="block-body">
+            <div class="container text-center">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="wrapper_bu" style="position:relative;">
+                    <div class="image">
+                      <a class="panel-heading accordion-toggle collapsed left" data-toggle="collapse"
+                      data-parent="#accordion1,#accordion2,#accordion3" data-target="#collapseTwo">
+                        <div id="bu1">
+                          <img alt="" src="/icons/Restaraunt.png" class="img-fluid imgtransform">
+                          <div class="title">Restaurants</div>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="image">
+                      <a class="panel-heading accordion-toggle collapsed left" data-toggle="collapse" data-parent="#accordion1,#accordion2,#accordion3" data-target="#collapseOne">
+                        <div id="bu2">
+                          <img alt="" src="/icons/video.png" class="img-fluid imgtransform">
+                          <div class="title">Films</div>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="image">
+                      <a class="panel-heading accordion-toggle collapsed left " data-toggle="collapse" data-parent="#accordion1,#accordion2,#accordion3" data-target="#collapseThree">
+                        <div id="bu3">
+                          <img alt="" src="/icons/music.png" class="img-fluid imgtransform">
+                          <div class="title">Songs</div>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="panel-group" id="accordion1">
+                    <div class="panel panel-default">
+                      <div id="collapseOne" class="panel-collapse collapse">
+                        <div class="panel-body movieList">
+                          <div class="center-down-arrow">
+                            <p style="color: mediumturquoise">Your Added Films</p>
+                          </div>
+                          <div>
+                            <img src="/icons/arrow.png">
+                          </div>
+
+                          <article class="movie">
+                            <header>
+                              <h2 class="title">The Toxic Avenger</h2>
+                              <h3 class="rating">6.2/10</h3>
+                              <p class="comment">- Dylan told me to watch this</p>
+                            </header>
+                            <div class="movieContainer">
+                              <img class="poster" src="http://ia.media-imdb.com/images/M/MV5BNzViNmQ5MTYtMmI4Yy00N2Y2LTg4NWUtYWU3MThkMTVjNjk3XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg">
+                              <div class="flex">
+                                <div class="genres">Genre: Action, Comedy, Horror</div>
+                                <div class="rated">Rated: R</div>
+                                <div class="director">Director: Michael Herz, Lloyd Kaufman</div>
+                                <div class="year">Year: 1984</div>
+                                <div class="runtime">Runtime: 82 min</div>
+                                <div class="plot">Plot:<br>This is the story of Melvin, the Tromaville Health Club mop boy, who inadvertently and naively trusts the hedonistic, contemptuous and vain health club members, to the point of accidentally ending up in a vat of toxic waste. The devastating results then have a transmogrification effect, his alter ego is released, and the Toxic Avenger is born, to deadly and comical results. The local mop boy is now the local Superhero, the saviour of corruption, thuggish bullies and indifference. Troma classic with good make-up effects and stunts, a pleasant surprise indeed.</div>
+                              </div>
+                              <footer>Item added on 2017/02/02</footer>
+                            </div>
+                            <div class="bottom"></div>
+                          </article>
+
+                          <article class="movie">
+                            <header>
+                              <h2 class="title">The Toxic Avenger</h2>
+                              <h3 class="rating">6.2/10</h3>
+                              <p class="comment">- Dylan told me to watch this</p>
+                            </header>
+                            <div class="movieContainer">
+                              <img class="poster" src="http://ia.media-imdb.com/images/M/MV5BNzViNmQ5MTYtMmI4Yy00N2Y2LTg4NWUtYWU3MThkMTVjNjk3XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg">
+                              <div class="flex">
+                                <div class="genres">Genre: Action, Comedy, Horror</div>
+                                <div class="rated">Rated: R</div>
+                                <div class="director">Director: Michael Herz, Lloyd Kaufman</div>
+                                <div class="year">Year: 1984</div>
+                                <div class="runtime">Runtime: 82 min</div>
+                                <div class="plot">Plot:<br>This is the story of Melvin, the Tromaville Health Club mop boy, who inadvertently and naively trusts the hedonistic, contemptuous and vain health club members, to the point of accidentally ending up in a vat of toxic waste. The devastating results then have a transmogrification effect, his alter ego is released, and the Toxic Avenger is born, to deadly and comical results. The local mop boy is now the local Superhero, the saviour of corruption, thuggish bullies and indifference. Troma classic with good make-up effects and stunts, a pleasant surprise indeed.</div>
+                              </div>
+                              <footer>Item added on 2017/02/02</footer>
+                            </div>
+                            <div class="bottom"></div>
+                          </article>
+
+                          <article class="movie">
+                            <header>
+                              <h2 class="title">The Toxic Avenger</h2>
+                              <h3 class="rating">6.2/10</h3>
+                              <p class="comment">- Dylan told me to watch this</p>
+                            </header>
+                            <div class="movieContainer">
+                              <img class="poster" src="http://ia.media-imdb.com/images/M/MV5BNzViNmQ5MTYtMmI4Yy00N2Y2LTg4NWUtYWU3MThkMTVjNjk3XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg">
+                              <div class="flex">
+                                <div class="genres">Genre: Action, Comedy, Horror</div>
+                                <div class="rated">Rated: R</div>
+                                <div class="director">Director: Michael Herz, Lloyd Kaufman</div>
+                                <div class="year">Year: 1984</div>
+                                <div class="runtime">Runtime: 82 min</div>
+                                <div class="plot">Plot:<br>This is the story of Melvin, the Tromaville Health Club mop boy, who inadvertently and naively trusts the hedonistic, contemptuous and vain health club members, to the point of accidentally ending up in a vat of toxic waste. The devastating results then have a transmogrification effect, his alter ego is released, and the Toxic Avenger is born, to deadly and comical results. The local mop boy is now the local Superhero, the saviour of corruption, thuggish bullies and indifference. Troma classic with good make-up effects and stunts, a pleasant surprise indeed.</div>
+                              </div>
+                              <footer>Item added on 2017/02/02</footer>
+                            </div>
+                            <div class="bottom"></div>
+                          </article>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div id="collapseTwo" class="panel-collapse collapse in">
+                        <div class="panel-body restaurantList">
+                          <div class="center-down-arrow">
+                              <p style="color: mediumturquoise">Your Added Restaurants</p>
+                          </div>
+                          <div>
+                            <img src="/icons/arrow.png">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div id="collapseThree" class="panel-collapse collapse">
+                        <div class="panel-body songList">
+                          <div class="center-down-arrow">
+                            <p style="color: mediumturquoise">Your Added Songs</p>
+                          </div>
+                          <div>
+                            <img src="/icons/arrow.png">
+                          </div>
+                          <br>
+                          <p>Hello World</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+
   </body>
 </html>

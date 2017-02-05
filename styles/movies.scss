@@ -1,99 +1,99 @@
-section.userLists {
-  .movieList {
-    margin: 5px;
-    .movie {
-      margin: 10px;
-      border: 1px solid black;
-      border-radius: 5px;
-      width: 500px;
-      header {
-        border-radius: 5px 5px 0 0;
-        background-color: #a7c7f9;
-        padding: 5px 10px 3px;
+.movieList {
+  margin: 5px;
+  .movie {
+    text-align: left;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 500px;
+    header {
+      border-radius: 5px 5px 0 0;
+      background-color: #a7c7f9;
+      padding: 5px 10px 3px;
+      margin: 0;
+      .title {
+        display: inline;
+      }
+      .rating {
+        display: inline;
+        float: right;
+        margin: 5px 0 0 0;
+      }
+      .comment {
         margin: 0;
-        .title {
-          display: inline;
-        }
-        .rating {
-          display: inline;
-          float: right;
-          margin: 5px 0 0 0;
-        }
-        .comment {
-          margin: 0;
-        }
       }
-      .container {
-        display: none;
-        position: relative;
-        min-height: 253px;
-        img.poster {
-          float: left;
-          width: 150px;
-          height: 226px;
-          margin: 2px 2px 0 3px;
+    }
+    .movieContainer {
+      display: none;
+      position: relative;
+      min-height: 253px;
+      img.poster {
+        float: left;
+        width: 150px;
+        height: 226px;
+        margin: 2px 2px 0 3px;
+        border: 1px solid black;
+      }
+      .flex {
+        display: flex;
+        flex-wrap: wrap;
+        .genres {
           border: 1px solid black;
+          padding: 5px;
+          order: 1;
+          flex-grow: 1;
+          margin: 2px 2px 0;
         }
-        .flex {
-          display: flex;
-          flex-wrap: wrap;
-          .genres {
-            border: 1px solid black;
-            padding: 5px;
-            order: 1;
-            flex-grow: 1;
-            margin: 2px 2px 0;
-          }
-          .rated {
-            border: 1px solid black;
-            padding: 5px;
-            order: 2;
-            flex-grow: 1;
-            margin: 2px 2px 0;
-          }
-          .director {
-            border: 1px solid black;
-            padding: 5px;
-            order: 3;
-            flex-grow: 1;
-            margin: 2px 2px 0;
-          }
-          .year {
-            border: 1px solid black;
-            padding: 5px;
-            order: 4;
-            flex-grow: 1;
-            margin: 2px 2px 0;
-          }
-          .runtime {
-            border: 1px solid black;
-            padding: 5px;
-            order: 5;
-            flex-grow: 1;
-            margin: 2px 2px 0;
-          }
-          .plot {
-            border: 1px solid black;
-            padding: 5px;
-            order: 6;
-            flex-grow: 1;
-            margin: 2px 2px 26px;
-          }
+        .rated {
+          border: 1px solid black;
+          padding: 5px;
+          order: 2;
+          flex-grow: 1;
+          margin: 2px 2px 0;
         }
-        footer {
-        background-color: #a7c7f9;
-        padding-top: 5px;
-        text-align: center;
-        position: absolute;
-        bottom: 0;
-        width: 100%;
+        .director {
+          border: 1px solid black;
+          padding: 5px;
+          order: 3;
+          flex-grow: 1;
+          margin: 2px 2px 0;
+        }
+        .year {
+          border: 1px solid black;
+          padding: 5px;
+          order: 4;
+          flex-grow: 1;
+          margin: 2px 2px 0;
+        }
+        .runtime {
+          border: 1px solid black;
+          padding: 5px;
+          order: 5;
+          flex-grow: 1;
+          margin: 2px 2px 0;
+        }
+        .plot {
+          border: 1px solid black;
+          padding: 5px;
+          order: 6;
+          flex-grow: 1;
+          margin: 2px 2px 26px;
         }
       }
-      .bottom {
-        height: 5px;
-        background-color: #a7c7f9;
-        border-radius: 0 0 5px 5px;
+      footer {
+      background-color: #a7c7f9;
+      padding-top: 5px;
+      text-align: center;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
       }
+    }
+    .bottom {
+      height: 5px;
+      background-color: #a7c7f9;
+      border-radius: 0 0 5px 5px;
     }
   }
 }
+
