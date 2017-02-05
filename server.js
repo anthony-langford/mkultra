@@ -36,11 +36,14 @@ app.use(express.static("public"));
 
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex));
-
-// Home page
+// HOMEPAGE
 app.get("/", (req, res) => {
   res.render("index");
 });
+
+app.get("/login", (req, res) => {
+  res.render("login");
+})
 
 app.post("/", (req, res) => {
 

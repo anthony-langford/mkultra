@@ -32,14 +32,6 @@ module.exports = (knex) => {
     }
   });
 
-  router.get("/", (req, res) => {
-    if (req.session.user) {
-      res.render("index", { isLoggedIn: true});
-    } else {
-      res.render("index", { isLoggedIn: false});
-    }
-  });
-
   router.get("/login", (req, res) => {
     if (req.session.user) {
       res.redirect("/");
