@@ -53,12 +53,12 @@ module.exports = (knex) => {
     .then((result) => {
       if (result.length == 0) {
         req.flash("loginMsg", "No account found: Please sign up");
-        return res.redirect("login");
-      } else if (!bcrypt.compareSync(password, result[0].password)){
+        return res.redirect("/login");
+      } else if (!bcrypt.compareSync(password, result[0].password)) {
           req.flash("loginMsg", "The password you entered is incorrect. Please try again");
-          res.redirect("login");
+          res.redirect("/login");
         } else {
-          res.redirect('/logins');
+          res.redirect('/login');
         }
     })
   });

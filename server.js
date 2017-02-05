@@ -60,10 +60,6 @@ app.post("/login", (req, res) => {
     }
 });
 
-app.post("/", (req, res) => {
-
-})
-
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
