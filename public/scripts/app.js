@@ -3,44 +3,24 @@ $(document).ready(function() {
   let userid = 1;
   let userItems = [];
   let newItem = {};
+  let userInput = {};
 
-  // First check db, if not found then send get request to wolfram API (appID is open to public, w/e)
+  // First check db, if not found then send get request to wolfram API
   let startSearch = (userInput) => {
-    let query = userInput.itemName;
-    console.log(query);
+
+    console.log(userInput.itemName);
 
     $.ajax({
       method: "POST",
-      url: "api/users/query",
-      data: query,
+      url: "/api/users/query",
+      data: userInput.itemName,
       success: (itemData) => {
         console.log("Found query in db");
         // set newItem to query found in db
       },
       error: () => {
         console.log("Failed to find query in db");
-        // if query wasn't in db: search wolfram API to categorize item, then search relevant API for item data
-        // then set newItem to query found in db
-        console.log(query);
-        let url = `http://api.wolframalpha.com/v2/query?${query}&appid=X3LWG7-TY8XGTGR5W&output=json&ignorecase=true`;
-        $.ajax({
-          method: "GET",
-          url: url,
-          success: (wolframResult) => {
-            if (JSON.stringify(wolframResult).indexOf('movie') || JSON.stringify(wolframResult).indexOf('movies') !== -1) {
-              // getImdbItem(userInput.itemName);
-              console.log("THIS IS A MOVIE");
-              getImdbItem(userInput.itemName)
-                .then((movieData) => {
-                  let movieItem = createMovieItem(movieData, userInput.inputComment, Date.now());
-                  $(".movieList").append(movieItem); // change to prepend
-                });
-            }
-          },
-          error: () => {
-            // wolfram api didn't respond? ask user for category and continue with searching corresponding API for item
-          }
-        });
+        // not in db, run APIs
       }
     });
   }
@@ -141,8 +121,8 @@ $(document).ready(function() {
     newItemButton.click(function() {
       event.preventDefault();
 
-      let userInput = { itemName: $(".inputItem").serialize(),
-                        inputComment: $(".inputComment").val()}
+      userInput = { itemName: $(".inputItem").serialize(),
+                    inputComment: $(".inputComment").val() };
       console.log("Submit item button clicked, performing Ajax call...");
 
       // Check for empty form and return alert error

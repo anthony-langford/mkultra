@@ -45,7 +45,6 @@ module.exports = (knex) => {
       .from('movies')
       .where({title: query})
       .then((results) => {
-        debugger;
         if (results[0] === undefined) {
           res.status(500).end();
         } else {

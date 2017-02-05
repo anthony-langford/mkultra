@@ -15,6 +15,7 @@ const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 const omdb        = require('omdb');
 
+
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
 
@@ -36,12 +37,6 @@ app.use("/styles", sass({
 }));
 app.use(express.static("public"));
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
-
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex));
 
@@ -56,7 +51,6 @@ app.get("/imdb", (req, res) => {
     if(err) {
         return console.log(err);
     }
-
     if(!itemData) {
         return console.log('Item not found!');
     }
@@ -76,3 +70,10 @@ app.post("/", (req, res) => {
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
+
+
+
+
+
+
+

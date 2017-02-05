@@ -4,7 +4,7 @@ exports.seed = function(knex, Promise) {
   return knex('movies').del()
     .then(function () {
       return Promise.all([
-        knex.raw( "COPY movies (title) FROM '/vagrant/mkultra/db/seeds/movieseed.csv' WITH CSV DELIMITER ','")
+        knex('movies').insert()
       ]);
     });
 };
