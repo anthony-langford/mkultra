@@ -6,6 +6,8 @@ const router  = express.Router();
 
 module.exports = (knex) => {
 
+const registerMsg = "Please Register";
+
   router.get("/", (req, res) => {
     knex
       .select("*")

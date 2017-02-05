@@ -53,10 +53,10 @@ app.post("/login", (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
     if (!email || !password) {
-      req.flash("loginMsg", "Please fillout the required input fields");
+      // req.flash("loginMsg", "Please fillout the required input fields");
       return res.redirect("login");
     } else {
-      res.render("index");
+      res.redirect("/index");
     }
 });
 
