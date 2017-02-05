@@ -45,6 +45,21 @@ app.get("/login", (req, res) => {
   res.render("login");
 })
 
+app.post("/login", (req, res) => {
+  res.render("index");
+})
+
+app.post("/login", (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+    if (!email || !password) {
+      req.flash("loginMsg", "Please fillout the required input fields");
+      return res.redirect("login");
+    } else {
+      res.render("index");
+    }
+});
+
 app.post("/", (req, res) => {
 
 })

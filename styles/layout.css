@@ -1,0 +1,111 @@
+a:hover
+{
+    text-decoration:none;
+}
+#wrapper_bu {
+    position: absolute;
+    width: 100%;
+    left: -4%;
+}
+
+
+.txt_h1 {
+    font-size: 2em;
+}
+
+.holder_bu {
+    cursor: pointer;
+}
+
+.holder_bu_awayL1 {
+    position: absolute;
+    top: 0;
+    left: 0%;
+    width: 33.3%;
+    -webkit-transition: width 1s, height 1s, top 1s, left 1s;
+    -moz-transition: width 1s, height 1s, top 1s, left 1s;
+    -o-transition: width 1s, height 1s, top 1s, left 1s;
+    -ms-transition: width 1s, height 1s, top 1s, left 1s;
+    transition: width 1s, height 1s, top 1s, left 1s;
+}
+
+.holder_bu_awayL2 {
+    position: absolute;
+    top: 0;
+    left: 66%;
+    width: 33.3%;
+    -webkit-transition: width 1s, height 1s, top 1s, left 1s;
+    -moz-transition: width 1s, height 1s, top 1s, left 1s;
+    -o-transition: width 1s, height 1s, top 1s, left 1s;
+    -ms-transition: width 1s, height 1s, top 1s, left 1s;
+    transition: width 1s, height 1s, top 1s, left 1s;
+}
+
+.holder_bu_center {
+    position: absolute;
+    top: 0;
+    left: 33%;
+    width: 33.3%;
+    -webkit-transition: width 1s, height 1s, top 1s, left 1s;
+    -moz-transition: width 1s, height 1s, top 1s, left 1s;
+    -o-transition: width 1s, height 1s, top 1s, left 1s;
+    -ms-transition: width 1s, height 1s, top 1s, left 1s;
+    transition: width 1s, height 1s, top 1s, left 1s;
+}
+
+.holder_bu_awayR1 {
+    position: absolute;
+    top: 0;
+    left: 80%;
+    width: 10%;
+    height: 40%;
+    -webkit-transition: width 1s, height 1s, top 1s, left 1s;
+    -moz-transition: width 1s, height 1s, top 1s, left 1s;
+    -o-transition: width 1s, height 1s, top 1s, left 1s;
+    -ms-transition: width 1s, height 1s, top 1s, left 1s;
+    transition: width 1s, height 1s, top 1s, left 1s;
+}
+
+.holder_bu_awayR2 {
+    position: absolute;
+    top: 0;
+    left: 90%;
+    width: 10%;
+    height: 30%;
+    -webkit-transition: width 1s, height 1s, top 1s, left 1s;
+    -moz-transition: width 1s, height 1s, top 1s, left 1s;
+    -o-transition: width 1s, height 1s, top 1s, left 1s;
+    -ms-transition: width 1s, height 1s, top 1s, left 1s;
+    transition: width 1s, height 1s, top 1s, left 1s;
+}
+
+.wrapper_bu {
+    height: 115px;
+    position: relative;
+}
+
+.panel-default {
+    border: none;
+}
+.panel-heading {
+    padding:0px;
+}
+
+.title.active {
+    font-size: 17px;
+    /*font-family: ProximaNovaBold;*/
+    color: #181818;
+    line-height: 20px;
+}
+
+.title {
+    font-size: 15px;
+    color: #878787;
+    margin: 25px 0px 0px 0px;
+    text-transform: uppercase;
+}
+
+.image img {
+    display:inline-block;
+    max-height: 100px;
+}
