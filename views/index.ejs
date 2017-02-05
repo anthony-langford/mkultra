@@ -40,11 +40,11 @@
   <div id="wrapper">
     <div id="header" class="content-block header-wrapper">
       <div class="header-wrapper-inner">
-        <section class="top clearfix">
+        <section class="top clearfix" action="/login" method="POST">
           <div class="center">
             <i class="fa fa-user user-icon pull-left" href="index.ejs"></i>
-            <a class="logo" href="index.ejs">A Top-Notch To-Do App</a>
-            <a class="toggleDrawer pull-right" img src="icons/bucket.png"><i class="fa fa-bars" hred="index.ejs"></i></a>
+            <a class="logo" href="index.ejs">Bucket</a>
+            <i class="fa fa-sign-in user-icon pull-right" href="index.ejs"></i>
           </div>
         </section>
         <section class="center">
@@ -64,7 +64,7 @@
       <div class="container">
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
-          <form class="form-search">
+          <form class="form-search" action="/index" method="POST">
             <h2 align="center" class="form-search-heading">Enter Your Query</h2>
             <label for="inputSearch" class="sr-only">Search</label>
             <input type="text" id="inputSearch" class="form-control" placeholder="Search Movie, Song, or Restaurant">
@@ -86,7 +86,7 @@
                   data-parent="#accordion1,#accordion2,#accordion3" data-target="#collapseTwo">
                   <div id="bu1">
                     <img alt="" src="/icons/Restaraunt.png" class="img-fluid imgtransform">
-                    <div class="title">Restaurants</div>
+                    <div class="title" style="color: #4da7ca">Restaurants</div>
                   </div>
                 </a>
               </div>
@@ -95,7 +95,7 @@
                 data-parent="#accordion1,#accordion2,#accordion3" data-target="#collapseOne">
                 <div id="bu2">
                   <img alt="" src="/icons/video.png" class="img-fluid imgtransform">
-                  <div class="title">Films</div>
+                  <div class="title" style="color: #00cc7a">Films</div>
                 </div>
               </a>
             </div>
@@ -104,7 +104,7 @@
               data-target="#collapseThree">
               <div id="bu3">
                 <img alt="" src="/icons/music.png" class="img-fluid imgtransform">
-                <div class="title">Songs</div>
+                <div class="title" style="color: #ff4d4d">Songs</div>
               </div>
             </a>
           </div>
@@ -114,7 +114,7 @@
             <div id="collapseOne" class="panel-collapse collapse">
               <div class="panel-body" style="color: #6a6a6a; background-color: #f1f0f0">
                 <div class="center-down-arrow">
-                  <p style="color: mediumturquoise">Your Added Films</p>
+                  <p style="color: #00cc7a">Your Added Films</p>
                 </div>
                 <div>
                   <img src="/icons/arrow.png">
@@ -126,7 +126,7 @@
             <div id="collapseTwo" class="panel-collapse collapse in">
               <div class="panel-body" style="color: #6a6a6a; background-color: #f1f0f0">
                 <div class="center-down-arrow">
-                  <p style="color: mediumturquoise">Your Added Restaurants</p>
+                  <p style="color: #4da7ca">Your Added Restaurants</p>
                 </div>
                 <div>
                   <img src="/icons/arrow.png">
@@ -138,7 +138,7 @@
             <div id="collapseThree" class="panel-collapse collapse">
               <div class="panel-body" style="color: #6a6a6a; background-color: #f1f0f0">
                 <div class="center-down-arrow">
-                  <p style="color: mediumturquoise">Your Added Songs</p>
+                  <p style="color: #ff4d4d">Your Added Songs</p>
                 </div>
                 <div>
                   <img src="/icons/arrow.png">
@@ -146,6 +146,17 @@
                 <br>
               </br>
               <div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
                 <p>Hello World</p>
               </div>
             </div>

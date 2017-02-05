@@ -45,9 +45,9 @@ app.get("/login", (req, res) => {
   res.render("login");
 })
 
-app.post("/login", (req, res) => {
-  res.render("index");
-})
+// app.post("/login", (req, res) => {
+//   res.render("index");
+// })
 
 app.post("/login", (req, res) => {
   const email = req.body.email;
