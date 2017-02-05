@@ -105,9 +105,11 @@ $(document).ready(function() {
           <footer>Item added on ${Date(date)}</footer>
         </div>
         <div class="bottom"></div>
-        <button class="toMovie"><i class="fa fa-film"></button>
-        <button class="toSong"><i class="fa fa-music"></button>
-        <button class="toRestaurant"><i class="fa fa-cutlery"></button>
+        <div class="updateBtns">
+          <button class="toMovie"><i class="fa fa-film"></i></button>
+          <button class="toSong"><i class="fa fa-music"></i></button>
+          <button class="toRestaurant"><i class="fa fa-cutlery"></i></button>
+        </div>
       </article>`
     }
 
@@ -127,9 +129,11 @@ $(document).ready(function() {
           <footer>Item added on ${Date(date)}</footer>
         </div>
         <div class="bottom"></div>
-        <button class="toMovie"><i class="fa fa-film"></button>
-        <button class="toSong"><i class="fa fa-music"></button>
-        <button class="toRestaurant"><i class="fa fa-cutlery"></button>
+        <div class="updateBtns">
+          <button class="toMovie"><i class="fa fa-film"></i></button>
+          <button class="toSong"><i class="fa fa-music"></i></button>
+          <button class="toRestaurant"><i class="fa fa-cutlery"></i></button>
+        </div>
       </article>`
     }
 
@@ -208,9 +212,11 @@ $(function() {
           <footer>Item added on ${Date(date)}</footer>
         </div>
         <div class="bottom"></div>
-        <button class="toMovie"><i class="fa fa-film"></button>
-        <button class="toSong"><i class="fa fa-music"></button>
-        <button class="toRestaurant"><i class="fa fa-cutlery"></button>
+        <div class="updateBtns">
+          <button class="toMovie"><i class="fa fa-film"></i></button>
+          <button class="toSong"><i class="fa fa-music"></i></button>
+          <button class="toRestaurant"><i class="fa fa-cutlery"></i></button>
+        </div>
       </article>`
     }
 
@@ -224,9 +230,11 @@ $(function() {
           <footer>Item added on ${Date(date)}</footer>
         </div>
         <div class="bottom"></div>
-        <button class="toMovie"><i class="fa fa-film"></button>
-        <button class="toSong"><i class="fa fa-music"></button>
-        <button class="toRestaurant"><i class="fa fa-cutlery"></button>
+        <div class="updateBtns">
+          <button class="toMovie"><i class="fa fa-film"></i></button>
+          <button class="toSong"><i class="fa fa-music"></i></button>
+          <button class="toRestaurant"><i class="fa fa-cutlery"></i></button>
+        </div>
       </article>`
     }
 
@@ -240,9 +248,11 @@ $(function() {
           <footer>Item added on ${Date(date)}</footer>
         </div>
         <div class="bottom"></div>
-        <button class="toMovie"><i class="fa fa-film"></button>
-        <button class="toSong"><i class="fa fa-music"></button>
-        <button class="toRestaurant"><i class="fa fa-cutlery"></button>
+        <div class="updateBtns">
+          <button class="toMovie"><i class="fa fa-film"></i></button>
+          <button class="toSong"><i class="fa fa-music"></i></button>
+          <button class="toRestaurant"><i class="fa fa-cutlery"></i></button>
+        </div>
       </article>`
     }
 

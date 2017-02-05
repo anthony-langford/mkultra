@@ -62,6 +62,14 @@ app.get("/imdb", (req, res) => {
   });
 });
 
+app.get("/login", (req, res) => {
+  res.render("login");
+});
+
+app.post("/login", (req, res) => {
+  res.render("index");
+});
+
 app.post("/", (req, res) => {
   if (!req.body) {
     res.status(400).json({ error: 'Invalid Request: No input in POST body' });
