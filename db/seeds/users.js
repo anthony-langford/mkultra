@@ -1,9 +1,5 @@
 exports.seed = function(knex, Promise) {
-  return Promise.all([
-    knex('items').del(),
-    knex('useritems').del(),
-    knex('users').del()
-    ])
+  return Promise.all([])
     .then(function () {
       return Promise.all([
         knex('items').insert({id: 1, name: 'Gladiator', category: 'Movie'}),

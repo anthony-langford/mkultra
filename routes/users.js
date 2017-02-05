@@ -28,7 +28,7 @@ module.exports = (knex) => {
 
   // Insert new item into db
   router.post("/search", (req, res) => {
-    let userid = Number(req.body.user_id)
+    let userid = Number(req.body.user_id);
     let data = {input: req.body.searchValue, comment: req.body.comment, user_id: userid, movie_id: null};
     knex('searches')
       .insert(data)
@@ -37,6 +37,35 @@ module.exports = (knex) => {
       });
     res.json({});
   });
+
+  router.post("/query", (req, res) => {
+    let query = req.body.text;
+    knex
+      .select('*')
+      .from('movies')
+      .where({title: query})
+      .then((results) => {
+        debugger;
+        if (results[0] === undefined) {
+          res.status(500).end();
+        } else {
+          console.log('Found search value in db');
+          res.json({});
+        }
+      });
+    // if query wasn't found in movies, search next table. put this in above .then?
+    // if (queryFound === false) {
+    //   knex
+    //     .select('title')
+    //     .from('movies')
+    //     .where({title: query})
+    //     .then((results) => {
+    //       if (results[0].title) {
+    //         queryFound = true;
+    //       }
+    //     });
+    // }
+    });
 
   return router;
 }
