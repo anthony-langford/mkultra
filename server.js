@@ -14,6 +14,8 @@ const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 const omdb        = require('omdb');
+const spotifyApi  = require('spotify-web-api-node');
+const spotify     = new spotifyApi();
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
@@ -58,6 +60,17 @@ app.get("/imdb", (req, res) => {
     res.json(itemData);
   });
 });
+
+// Get item data from Spotify
+app.get("/spotify", (req, res) => {
+  spotify.searchTracks(req.query.text, function(err, data) {
+    if (err) {
+      console.log("Error: ", err);
+      return
+    }
+    console.log(data);
+  })
+})
 
 app.post("/", (req, res) => {
   if (!req.body) {

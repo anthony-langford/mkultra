@@ -51,6 +51,20 @@ $(document).ready(function() {
       });
     };
 
+    let getSpotifyItem = (itemName) => {
+      return new Promise((resolve, reject) => {
+        $.ajax({
+          method: "GET",
+          url: "/spotify",
+          data: itemName,
+          success: (itemData) => {
+            console.log("Successful Spotify API request");
+            resolve(itemData);
+          }
+        })
+      })
+    }
+
     let saveNewMovie = (newItem) => {
       $.ajax({
         method: "POST",
@@ -120,18 +134,20 @@ $(document).ready(function() {
         if ($("alert")) {
           $("alert").remove();
           saveSearch(userInput, userid);
-          getImdbItem(userInput.itemName)
-          .then((movieData) => {
-            let movieItem = createMovieItem(movieData, userInput.inputComment, Date.now());
-            $(".movieList").append(movieItem);
-          })
+          getSpotifyItem(userInput.itemName);
+          // getImdbItem(userInput.itemName)
+          // .then((movieData) => {
+          //   let movieItem = createMovieItem(movieData, userInput.inputComment, Date.now());
+          //   $(".movieList").append(movieItem);
+          // })
         } else {
           saveSearch(userInput, userid);
-          getImdbItem(userInput.itemName)
-          .then((movieData) => {
-            let movieItem = createMovieItem(movieData, userInput.inputComment, Date.now());
-            $(".movieList").append(movieItem);
-          })
+          getSpotifyItem(userInput.itemName);
+          // getImdbItem(userInput.itemName)
+          // .then((movieData) => {
+          //   let movieItem = createMovieItem(movieData, userInput.inputComment, Date.now());
+          //   $(".movieList").append(movieItem);
+          // })
         }
       }
     });
