@@ -1,6 +1,6 @@
-.movieList {
+.songList {
   margin: 5px;
-  .movie {
+  .song {
     text-align: left;
     margin: 10px auto;
     border: 1px solid black;
@@ -9,7 +9,6 @@
     header {
       border-radius: 5px 5px 0 0;
       background-color: #29343f;
-      color: white;
       padding: 5px 10px 3px;
       margin: 0;
       .title {
@@ -17,7 +16,7 @@
         color: white;
         font-size: 26px;
       }
-      .rating {
+      .artist {
         display: inline;
         float: right;
         color: white;
@@ -31,9 +30,9 @@
       display: none;
       position: relative;
       min-height: 253px;
-      img.poster {
+      img.albumCover {
         float: left;
-        width: 150px;
+        width: 226px;
         height: 226px;
         margin: 2px 2px 0 3px;
         border: 1px solid black;
@@ -41,47 +40,19 @@
       .flex {
         display: flex;
         flex-wrap: wrap;
-        .genres {
+        .album {
           border: 1px solid black;
           padding: 5px;
           order: 1;
           flex-grow: 1;
           margin: 2px 2px 0;
         }
-        .rated {
+        .trackNum {
           border: 1px solid black;
           padding: 5px;
           order: 2;
           flex-grow: 1;
           margin: 2px 2px 0;
-        }
-        .director {
-          border: 1px solid black;
-          padding: 5px;
-          order: 3;
-          flex-grow: 1;
-          margin: 2px 2px 0;
-        }
-        .year {
-          border: 1px solid black;
-          padding: 5px;
-          order: 4;
-          flex-grow: 1;
-          margin: 2px 2px 0;
-        }
-        .runtime {
-          border: 1px solid black;
-          padding: 5px;
-          order: 5;
-          flex-grow: 1;
-          margin: 2px 2px 0;
-        }
-        .plot {
-          border: 1px solid black;
-          padding: 5px;
-          order: 6;
-          flex-grow: 1;
-          margin: 2px 2px 26px;
         }
       }
       footer {
@@ -101,4 +72,3 @@
     }
   }
 }
-
