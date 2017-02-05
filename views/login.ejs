@@ -2,7 +2,7 @@
 <html class="noIE" lang="en-US">
 <head>
 
-  <title>ToDo App</title>
+  <title>Bucket</title>
 
   <!-- meta -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,9 +12,6 @@
   <!-- scripts -->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
-  <script type="text/javascript" src="/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
-  <script type="text/javascript" src="/fancybox/jquery.easing-1.4.pack.js"></script>
 
   <!-- google fonts -->
   <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=PT+Sans'>
@@ -29,30 +26,10 @@
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/font-awesome.min.css">
   <link rel="stylesheet" href="assets/css/style.css" media="screen"/>
-  <link rel="stylesheet" href="assets/css/layout.css">
   <link rel="stylesheet" href="assets/css/custom.css">
-  <link rel="stylesheet" href="assets/css/login.css">
-  <!-- <link rel="stylesheet" href="assets/css/login.css" -->
+  <link rel="stylesheet" href="assets/css/layout.css">
 
 </head>
-
-<body>
-  <div id="drawer-right">
-    <div class="cross text-right">
-      <a class="toggleDrawer" href="#"><i class="fa fa-times-circle fa-2x"></i></a>
-    </div>
-    <h2>Navigate</h2>
-    <nav>
-      <ul class="nav nav-pills nav-stacked">
-        <li>
-          <a href="#wrapper"><i class="fa fa-home"></i>Home</a>
-        </li>
-        <li>
-          <a href="#portfolio"><i class="fa fa-bookmark"></i>User Profile</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
 
   <div id="wrapper">
     <div id="header" class="content-block header-wrapper">
@@ -64,19 +41,19 @@
             <a class="toggleDrawer pull-right" href="#"><i class="fa fa-bars" hred="index.ejs"></i></a>
           </div>
         </section>
+
           <div class="content-block" id="portfolio">
             <div class="container">
-              <div class="col-sm-4"></div>
-              <div class="col-sm-4">
-                <form class="form-signin">
-                  <h2 align="center" class="form-signin-heading">Sign In</h2>
+              <div class="col-sm-4" style="padding-bottom:130px"></div>
+              <div class="col-sm-4" style="padding-bottom:130px">
+                <form class="form-signin" action="/login" method="POST">
                   <label for="inputEmail" class="sr-only">Email Address</label>
-                  <input type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+                  <input type="email" id="inputEmail" class="form-control" placeholder="Email" required>
                   <label for="inputPassword" class="sr-only">Password</label>
                   <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
                   <div class="checkbox">
-                    <label>
-                      <input type="checkbox" value="remember-me">Remember Me</input>
+                    <label style="color: aliceblue;">
+                      <input type="checkbox" value="remember-me" style="color: aliceblue;">Remember Me</input>
                     </label>
                   </div>
                   <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
@@ -84,6 +61,7 @@
               </div>
             </div>
           </div>
+
       </div>
     </div>
 </div>

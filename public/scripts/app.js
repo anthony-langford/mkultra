@@ -90,7 +90,7 @@ $(document).ready(function() {
         <header>
           <h2 class="title">${movie.title}</h2>
           <h3 class="rating">${movie.imdb.rating}/10</h3>
-          <p class="comment"> ${comment}</p>
+          <p class="comment">${comment}</p>
         </header>
         <div class="itemContainer">
           <img class="poster" src=${movie.poster}>
@@ -105,16 +105,18 @@ $(document).ready(function() {
           <footer>Item added on ${Date(date)}</footer>
         </div>
         <div class="bottom"></div>
+        <button class="toMovie"><i class="fa fa-film"></button>
+        <button class="toSong"><i class="fa fa-music"></button>
+        <button class="toRestaurant"><i class="fa fa-cutlery"></button>
       </article>`
     }
 
     function createSongItem(song, comment, date) {
-      console.log(song);
       return `<article class="song">
         <header>
           <h2 class="title">${song.tracks.items[0].name}</h2>
           <h3 class="artist">${song.tracks.items[0].artists[0].name}</h3>
-          <p class="comment"> ${comment}</p>
+          <p class="comment">${comment}</p>
         </header>
         <div class="itemContainer">
           <img class="albumCover" src=${song.tracks.items[0].album.images[0].url}>
@@ -125,8 +127,12 @@ $(document).ready(function() {
           <footer>Item added on ${Date(date)}</footer>
         </div>
         <div class="bottom"></div>
+        <button class="toMovie"><i class="fa fa-film"></button>
+        <button class="toSong"><i class="fa fa-music"></button>
+        <button class="toRestaurant"><i class="fa fa-cutlery"></button>
       </article>`
     }
+
 
   // Submit item and send GET req to oMDB to scrape for item data, then POST to save data to db
   $(function() {
@@ -192,13 +198,84 @@ $(document).ready(function() {
 
 $(function() {
 
+  function createSimpleMovieItem(movie, comment, date) {
+      return `<article class="movie">
+        <header>
+          <h2 class="title">${movie}</h2>
+          <p class="comment">${comment}</p>
+        </header>
+        <div class="itemContainer">
+          <footer>Item added on ${Date(date)}</footer>
+        </div>
+        <div class="bottom"></div>
+        <button class="toMovie"><i class="fa fa-film"></button>
+        <button class="toSong"><i class="fa fa-music"></button>
+        <button class="toRestaurant"><i class="fa fa-cutlery"></button>
+      </article>`
+    }
+
+    function createSimpleSongItem(song, comment, date) {
+      return `<article class="song">
+        <header>
+          <h2 class="title">${song}</h2>
+          <p class="comment">${comment}</p>
+        </header>
+        <div class="itemContainer">
+          <footer>Item added on ${Date(date)}</footer>
+        </div>
+        <div class="bottom"></div>
+        <button class="toMovie"><i class="fa fa-film"></button>
+        <button class="toSong"><i class="fa fa-music"></button>
+        <button class="toRestaurant"><i class="fa fa-cutlery"></button>
+      </article>`
+    }
+
+    function createSimpleRestaurantItem(restaurant, comment, date) {
+      return `<article class="restaurant">
+        <header>
+          <h2 class="title">${restaurant}</h2>
+          <p class="comment">${comment}</p>
+        </header>
+        <div class="itemContainer">
+          <footer>Item added on ${Date(date)}</footer>
+        </div>
+        <div class="bottom"></div>
+        <button class="toMovie"><i class="fa fa-film"></button>
+        <button class="toSong"><i class="fa fa-music"></button>
+        <button class="toRestaurant"><i class="fa fa-cutlery"></button>
+      </article>`
+    }
+
   $(".userLists").on("click", 'article', function() {
+    // toggle list item content on click
     if ($(this).children('.itemContainer').css('display') === 'none') {
       $(this).children('.itemContainer').css('display', 'block');
     } else {
       $(this).children('.itemContainer').css('display', 'none');
     }
   });
+
+  $(".userLists").on("click", ".toMovie", function() {
+    // remove wrongly-categorized article and append it to correct list
+    let updatedMovieItem = createSimpleMovieItem($(this).closest("article").find(".title").text(), $(this).closest("article").find(".comment").text(), Date.now());
+    $(".movieList").append(updatedMovieItem);
+    $(this).closest("article").remove();
+  })
+
+  $(".userLists").on("click", ".toSong", function() {
+    // remove wrongly-categorized article and append it to correct list
+    let updatedSongItem = createSimpleSongItem($(this).closest("article").find(".title").text(), $(this).closest("article").find(".comment").text(), Date.now());
+    $(".songList").append(updatedSongItem);
+    $(this).closest("article").remove();
+  })
+
+  $(".userLists").on("click", ".toRestaurant", function() {
+    // remove wrongly-categorized article and append it to correct list
+    let updatedRestaurantItem = createSimpleRestaurantItem($(this).closest("article").find(".title").text(), $(this).closest("article").find(".comment").text(), Date.now());
+    $(".restaurantList").append(updatedRestaurantItem);
+    $(this).closest("article").remove();
+  })
+
 });
 
 var Conclave = (function () {

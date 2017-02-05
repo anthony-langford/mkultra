@@ -1,6 +1,6 @@
-.songList {
+.restaurantList {
   margin: 5px;
-  .song {
+  .restaurant {
     text-align: left;
     margin: 10px auto;
     border: 1px solid black;
@@ -16,7 +16,7 @@
         color: white;
         font-size: 26px;
       }
-      .artist {
+      .rating {
         display: inline;
         float: right;
         color: white;
@@ -31,27 +31,14 @@
       display: none;
       position: relative;
       min-height: 253px;
-      img.albumCover {
-        float: left;
-        width: 226px;
-        height: 226px;
-        margin: 2px 2px 0 3px;
-        border: 1px solid black;
-      }
+
       .flex {
         display: flex;
         flex-wrap: wrap;
-        .album {
+        .cuisine {
           border: 1px solid black;
           padding: 5px;
           order: 1;
-          flex-grow: 1;
-          margin: 2px 2px 0;
-        }
-        .trackNum {
-          border: 1px solid black;
-          padding: 5px;
-          order: 2;
           flex-grow: 1;
           margin: 2px 2px 0;
         }
