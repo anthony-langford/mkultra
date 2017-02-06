@@ -168,7 +168,7 @@ $(document).ready(function() {
       } else {
         if ($("alert")) {
           $("alert").remove();
-          saveSearch(userInput, userid);
+          // saveSearch(userInput, userid);
           getSpotifyItem(userInput.itemName)
           .then((songData) => {
             let songItem = createSongItem(songData, userInput.inputComment, Date.now());
@@ -180,7 +180,7 @@ $(document).ready(function() {
           //   $(".movieList").append(movieItem);
           // })
         } else {
-          saveSearch(userInput, userid);
+          // saveSearch(userInput, userid);
           getSpotifyItem(userInput.itemName)
           .then((songData) => {
             let songItem = createSongItem(songData, userInput.inputComment, Date.now());
