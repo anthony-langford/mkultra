@@ -63,6 +63,17 @@ app.get("/imdb", (req, res) => {
   });
 });
 
+app.get("/spotify", (req, res) => {
+  console.log(req.query.text);
+  spotify(req.query.text, (err, data) => {
+    if (err) {
+      console.log(err);
+    }
+    console.log(data);
+    res.json(data);
+  });
+})
+
 app.get("/login", (req, res) => {
   res.render("login");
 });

@@ -1,13 +1,14 @@
 const request = require('request');
 
-var BASE_URL = "http://api.wolframalpha.com/v2/query?input=";
-var URL_OPTS = "&appid=X3LWG7-TY8XGTGR5W&output=json&ignorecase=true";
+var BASE_URL = "http://api.spotify.com/v1/search?q=";
+var URL_OPTS = "&type=track";
 
 
-function wolfram(query, cb) {
+function spotify(query, cb) {
 
+  let urlQuery = query.split(" ").join("%20");
   // 1. Append query to url, create our full url string
-  let url = BASE_URL + query + URL_OPTS;
+  let url = BASE_URL + urlQuery + URL_OPTS;
   console.log(url);
 
   // 2. send a get request
@@ -24,10 +25,4 @@ function wolfram(query, cb) {
 
 };
 
-module.exports = wolfram;
-wolfram("star%20wars", (err, data) => {
-  if (err) {
-    console.log(err);
-  }
-  console.log(data);
-});
+module.exports = spotify;

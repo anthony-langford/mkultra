@@ -55,9 +55,8 @@ $(document).ready(function() {
       return new Promise((resolve, reject) => {
         $.ajax({
           method: "GET",
-          url: "http://api.spotify.com/v1/search",
-          data: { q: itemName.slice(5).split("%20").join(" "),
-                  type: 'track' },
+          url: "/spotify",
+          data: itemName,
           success: (itemData) => {
             console.log(itemData);
             console.log("Successful Spotify API request");
@@ -149,53 +148,53 @@ $(document).ready(function() {
       // let itemName = $(".addItem form").serialize();
 
       let userInput = { itemName: $(".inputItem").serialize(),
-                        inputComment: $(".inputComment").val()}
+                        inputComment: $(".inputComment").val()};
       console.log("Submit item button clicked, performing Ajax call...");
 
       // Check for empty form and return alert error
-      if (userInput.itemName === "text=") {
-        console.log("Empty form");
-        if ($("alert")) {
-          $("alert").remove();
-          let alert = $("<alert>").addClass("alert").text("Write something dummy!");
-          $(".addItem").addClass("alert").append(alert);
-          return;
-        } else {
-          let alert = $("<alert>").addClass("alert").text("You can't send an empty tweet!");
-          $(".addItem").addClass("alert").append(alert);
-          return;
-        }
-      } else {
-        if ($("alert")) {
-          $("alert").remove();
+      // if (userInput.itemName === "text=") {
+      //   console.log("Empty form");
+      //   if ($("alert")) {
+      //     $("alert").remove();
+      //     let alert = $("<alert>").addClass("alert").text("Write something dummy!");
+      //     $(".addItem").addClass("alert").append(alert);
+      //     return;
+      //   } else {
+      //     let alert = $("<alert>").addClass("alert").text("You can't send an empty tweet!");
+      //     $(".addItem").addClass("alert").append(alert);
+      //     return;
+      //   }
+      // } else {
+      //   if ($("alert")) {
+      //     $("alert").remove();
+      //     // saveSearch(userInput, userid);
+      //     console.log(userInput.itemName);
+      //     getSpotifyItem(userInput.itemName)
+      //     .then((songData) => {
+      //       let songItem = createSongItem(songData, userInput.inputComment, Date.now());
+      //       $(".songList").append(songItem);
+      //     })
+      //     // getImdbItem(userInput.itemName)
+      //     // .then((movieData) => {
+      //     //   let movieItem = createMovieItem(movieData, userInput.inputComment, Date.now());
+      //     //   $(".movieList").append(movieItem);
+      //     // })
+      //   } else {
           // saveSearch(userInput, userid);
-          getSpotifyItem(userInput.itemName)
-          .then((songData) => {
-            let songItem = createSongItem(songData, userInput.inputComment, Date.now());
-            $(".songList").append(songItem);
-          })
-          // getImdbItem(userInput.itemName)
-          // .then((movieData) => {
-          //   let movieItem = createMovieItem(movieData, userInput.inputComment, Date.now());
-          //   $(".movieList").append(movieItem);
+          console.log(userInput.itemName);
+          // getSpotifyItem(userInput.itemName)
+          // .then((songData) => {
+          //   let songItem = createSongItem(songData, userInput.inputComment, Date.now());
+          //   $(".songList").append(songItem);
           // })
-        } else {
-          // saveSearch(userInput, userid);
-          getSpotifyItem(userInput.itemName)
-          .then((songData) => {
-            let songItem = createSongItem(songData, userInput.inputComment, Date.now());
-            $(".songList").append(songItem);
+          getImdbItem(userInput.itemName)
+          .then((movieData) => {
+            let movieItem = createMovieItem(movieData, userInput.inputComment, Date.now());
+            $(".movieList").append(movieItem);
           })
-          // getImdbItem(userInput.itemName)
-          // .then((movieData) => {
-          //   let movieItem = createMovieItem(movieData, userInput.inputComment, Date.now());
-          //   $(".movieList").append(movieItem);
-          // })
-        }
-      }
+        // }
+      // }
     });
-
-  // getUsers();
   });
 
 });
