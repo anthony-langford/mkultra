@@ -30,12 +30,19 @@
     .itemContainer {
       display: none;
       position: relative;
-      min-height: 253px;
+      min-height: 60px;
 
       .flex {
         display: flex;
         flex-wrap: wrap;
         .cuisine {
+          border: 1px solid black;
+          padding: 5px;
+          order: 1;
+          flex-grow: 1;
+          margin: 2px 2px 0;
+        }
+        .price {
           border: 1px solid black;
           padding: 5px;
           order: 1;

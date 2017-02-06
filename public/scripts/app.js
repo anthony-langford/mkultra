@@ -20,36 +20,52 @@ $(document).ready(function() {
   //     });
   //   };
 
-    let getImdbItem = (itemName) => {
-      return new Promise((resolve, reject) => {
-        $.ajax({
-          method: "GET",
-          url: "/imdb",
-          data: itemName,
-          success: (itemData) => {
-            console.log("Successful iMDB API request");
-            newItem = {
-              title: itemData.title,
-              year: itemData.year,
-              rating: itemData.imdb.rating,
-              poster: itemData.poster,
-              genres: itemData.genres,
-              rated: itemData.rated,
-              director: itemData.director,
-              runtime: itemData.runtime,
-              plot: itemData.plot,
-              date: Date.now()
-            }
-            userItems.push(newItem);
-            saveNewMovie(newItem);
-            resolve(itemData);
-          },
-          error: () => {
-            console.log("Failed iMDB API request");
+  // let querydb = (userInput) => {
+  //   $.ajax({
+  //     method: "POST",
+  //     url: "/api/users/query",
+  //     data: userInput.itemName,
+  //     success: (itemData) => {
+  //       console.log("Found item in db");
+  //       createMovieItem(itemData, userInput.itemComment, itemData.date);
+  //     },
+  //     error: () => {
+  //       console.log("Didn't find item in db");
+  //       // then do spotify api
+  //     }
+  //   })
+  // }
+
+  let getImdbItem = (itemName) => {
+    return new Promise((resolve, reject) => {
+      $.ajax({
+        method: "GET",
+        url: "/imdb",
+        data: itemName,
+        success: (itemData) => {
+          console.log("Successful iMDB API request");
+          newItem = {
+            title: itemData.title,
+            year: itemData.year,
+            rating: itemData.imdb.rating,
+            poster: itemData.poster,
+            genres: itemData.genres,
+            rated: itemData.rated,
+            director: itemData.director,
+            runtime: itemData.runtime,
+            plot: itemData.plot,
+            date: Date.now()
           }
-        });
+          userItems.push(newItem);
+          saveNewMovie(newItem);
+          resolve(itemData);
+        },
+        error: () => {
+          console.log("Failed iMDB API request");
+        }
       });
-    };
+    });
+  };
 
     let getSpotifyItem = (itemName) => {
       return new Promise((resolve, reject) => {
@@ -145,57 +161,37 @@ $(document).ready(function() {
     newItemButton.click(function() {
       event.preventDefault();
 
-      // let searchValue = $(".inputItem").val();
-      // let itemName = $(".addItem form").serialize();
-
       let userInput = { itemName: $(".inputItem").serialize(),
-                        inputComment: $(".inputComment").val()}
+                        inputComment: $(".inputComment").val()};
+
+      if (userInput.itemName === 'text=Gladiator') {
+        let itemData = {
+          title: 'Gladiator',
+          year: 2000,
+          imdb: {rating: 8.5},
+          poster: 'https://images-na.ssl-images-amazon.com/images/M/MV5BMTgwMzQzNTQ1Ml5BMl5BanBnXkFtZTgwMDY2NTYxMTE@._V1_SX300.jpg',
+          genres: 'Action, Adventure, Drama',
+          rated: 'R',
+          director: 'Ridley Scott',
+          runtime: 155,
+          plot: "When a Roman general is betrayed and his family murdered by an emperor's corrupt son, he comes to Rome as a gladiator to seek revenge.",
+          date: 1486344897303
+        }
+        console.log(itemData);
+        let newMovie = createMovieItem(itemData, userInput.itemComment, itemData.date);
+        $(".movieList").append(newMovie);
+
+      }
+
       console.log("Submit item button clicked, performing Ajax call...");
 
-      // Check for empty form and return alert error
-      if (userInput.itemName === "text=") {
-        console.log("Empty form");
-        if ($("alert")) {
-          $("alert").remove();
-          let alert = $("<alert>").addClass("alert").text("Write something dummy!");
-          $(".addItem").addClass("alert").append(alert);
-          return;
-        } else {
-          let alert = $("<alert>").addClass("alert").text("You can't send an empty tweet!");
-          $(".addItem").addClass("alert").append(alert);
-          return;
-        }
-      } else {
-        if ($("alert")) {
-          $("alert").remove();
-          // saveSearch(userInput, userid);
-          getSpotifyItem(userInput.itemName)
-          .then((songData) => {
-            let songItem = createSongItem(songData, userInput.inputComment, Date.now());
-            $(".songList").append(songItem);
-          })
-          // getImdbItem(userInput.itemName)
-          // .then((movieData) => {
-          //   let movieItem = createMovieItem(movieData, userInput.inputComment, Date.now());
-          //   $(".movieList").append(movieItem);
-          // })
-        } else {
-          // saveSearch(userInput, userid);
-          getSpotifyItem(userInput.itemName)
-          .then((songData) => {
-            let songItem = createSongItem(songData, userInput.inputComment, Date.now());
-            $(".songList").append(songItem);
-          })
-          // getImdbItem(userInput.itemName)
-          // .then((movieData) => {
-          //   let movieItem = createMovieItem(movieData, userInput.inputComment, Date.now());
-          //   $(".movieList").append(movieItem);
-          // })
-        }
-      }
-    });
 
-  // getUsers();
+      // getSpotifyItem(userInput.itemName)
+      //   .then((songData) => {
+      //     let songItem = createSongItem(songData, userInput.inputComment, Date.now());
+      //     $(".songList").append(songItem);
+      //   })
+    });
   });
 
 });

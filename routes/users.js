@@ -111,33 +111,44 @@ module.exports = (knex) => {
     res.redirect("/");
   });
 
-   router.post("/query", (req, res) => {
-    let query = req.body.text;
-    knex
-      .select('title')
-      .from('movies')
-      .where({title: query})
-      .then((results) => {
-        if (results[0].title) {
-          queryFound = true;
-          console.log('Found search value in db');
-          // need to return json with item data if found
-        }
-      });
+  let queryFound = false;
+  let results2 = [];
 
-    // if query wasn't found in movies, search next table. put this in above .then?
+  router.post("/query", (req, res) => {
+    let query = req.body.text;
+    // knex.select('*')
+    //   .from('movies')
+    //   .where('title', '=', query)
+    //   .then(function(results) {
+    //       queryFound = true;
+    //       console.log('Found search value in db');
+    //       results2.push(results[0]);
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   });
+
+    let newItem = {
+      title: 'Gladiator',
+      year: 2000,
+      rating: 8.5,
+      poster: 'https://images-na.ssl-images-amazon.com/images/M/MV5BMTgwMzQzNTQ1Ml5BMl5BanBnXkFtZTgwMDY2NTYxMTE@._V1_SX300.jpg',
+      genres: 'Action, Adventure, Drama',
+      rated: 'R',
+      director: 'Ridley Scott',
+      runtime: 155,
+      plot: "When a Roman general is betrayed and his family murdered by an emperor's corrupt son, he comes to Rome as a gladiator to seek revenge.",
+      date: 1486344897303
+    }
+    res.json(newItem);
+
     // if (queryFound === false) {
-    //   knex
-    //     .select('title')
-    //     .from('movies')
-    //     .where({title: query})
-    //     .then((results) => {
-    //       if (results[0].title) {
-    //         queryFound = true;
-    //       }
-    //     });
+
+    // } else {
+    //   res.status(400).end();
     // }
-    });
+
+  });
 
   return router;
 }
