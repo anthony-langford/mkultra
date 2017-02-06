@@ -182,16 +182,16 @@ $(document).ready(function() {
       //   } else {
           // saveSearch(userInput, userid);
           console.log(userInput.itemName);
-          // getSpotifyItem(userInput.itemName)
-          // .then((songData) => {
-          //   let songItem = createSongItem(songData, userInput.inputComment, Date.now());
-          //   $(".songList").append(songItem);
-          // })
-          getImdbItem(userInput.itemName)
-          .then((movieData) => {
-            let movieItem = createMovieItem(movieData, userInput.inputComment, Date.now());
-            $(".movieList").append(movieItem);
+          getSpotifyItem(userInput.itemName)
+          .then((songData) => {
+            let songItem = createSongItem(songData, userInput.inputComment, Date.now());
+            $(".songList").append(songItem);
           })
+          // getImdbItem(userInput.itemName)
+          // .then((movieData) => {
+          //   let movieItem = createMovieItem(movieData, userInput.inputComment, Date.now());
+          //   $(".movieList").append(movieItem);
+          // })
         // }
       // }
     });
