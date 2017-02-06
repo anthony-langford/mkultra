@@ -181,9 +181,9 @@ $(document).ready(function() {
       let newMovie = createMovieItem(itemData, userInput.inputComment, itemData.date);
       $(".movieList").append(newMovie);
 
-      console.log("Submit item button clicked, performing Ajax call...");
-      }
 
+      } else {
+        console.log("Submit item button clicked, performing Ajax call...");
       // Check for empty form and return alert error
       // if (userInput.itemName === "text=") {
       //   console.log("Empty form");
@@ -214,12 +214,13 @@ $(document).ready(function() {
       //     // })
       //   } else {
           // saveSearch(userInput, userid);
-      console.log(userInput.itemName);
-      getSpotifyItem(userInput.itemName)
-      .then((songData) => {
-        let songItem = createSongItem(songData, userInput.inputComment, Date.now());
-        $(".songList").append(songItem);
-      })
+        console.log(userInput.itemName);
+        getSpotifyItem(userInput.itemName)
+        .then((songData) => {
+          let songItem = createSongItem(songData, userInput.inputComment, Date.now());
+          $(".songList").append(songItem);
+        })
+      }
           // getImdbItem(userInput.itemName)
           // .then((movieData) => {
           //   let movieItem = createMovieItem(movieData, userInput.inputComment, Date.now());
