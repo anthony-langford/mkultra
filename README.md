@@ -1,14 +1,14 @@
-# Node Skeleton
+# Bucket
+
+Bucket is a web application that allows users to search for a movie, restaurant, or book and have it automatically categorized and added to a personalized to-do list for future reference.
+
+Bucket was built in a Node.js environment on Javascript, PostgreSQL database, Knex, and several APIs including iMDB API, Google API, Wolfram API.
 
 ## Project Setup
 
-1. Create your own empty repo on GitHub
-2. Clone this repository (do not fork)
-  - Suggestion: When cloning, specify a different folder name that is relevant to your project
-3. Remove the git remote: `git remote rm origin`
-4. Add a remote for your origin: `git remote add origin <your github repo URL>`
-5. Push to the new origin: `git push -u origin master`
-6. Verify that the skeleton code now shows up in your repo on GitHub
+1. Clone this repository
+2. Run `npm run local`
+3. Visit `http://localhost:8080/`
 
 ## Getting Started
 
