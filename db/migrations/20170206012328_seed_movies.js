@@ -1,5 +1,5 @@
 
-exports.up = function(knex, Promise) {
+exports.up = (knex, Promise) => {
   let date = new Date();
   return Promise.all([
     knex('movies').insert({
@@ -17,6 +17,6 @@ exports.up = function(knex, Promise) {
   ]);
 };
 
-exports.down = function(knex, Promise) {
+exports.down = (knex, Promise) => {
   return knex('movies').where({name: 'Gladiator'}).del();
 };

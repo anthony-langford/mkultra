@@ -44,19 +44,19 @@ app.get("/", (req, res) => {
   // if (req.session.user) {
   //     res.render("index", { isLoggedIn: true});
   //   } else {
-      res.render("index", { isLoggedIn: false});
+      res.render("index", { isLoggedIn: false });
     // }
 });
 
 // Get item data from iMDB
 app.get("/imdb", (req, res) => {
   omdb.get({ title: req.query.text }, true, (err, itemData) => {
-    if(err) {
-        return console.log(err);
+    if (err) {
+      return console.log(err);
     }
 
-    if(!itemData) {
-        return console.log('Item not found!');
+    if (!itemData) {
+      return console.log('Item not found!');
     }
     console.log(itemData);
     res.json(itemData);

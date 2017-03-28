@@ -30,7 +30,7 @@ module.exports = (knex) => {
   // Insert new item into db
   router.post("/search", (req, res) => {
     let userid = Number(req.body.user_id)
-    let data = {input: req.body.searchValue, comment: req.body.comment, user_id: userid, movie_id: null};
+    let data = { input: req.body.searchValue, comment: req.body.comment, user_id: userid, movie_id: null };
     knex('searches')
       .insert(data)
       .then(() => {

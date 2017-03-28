@@ -1,4 +1,4 @@
-exports.up = function(knex, Promise) {
+exports.up = (knex, Promise) => {
   return knex.schema.createTable('users', (table) => {
     table.increments();
     table.string('name');
@@ -30,7 +30,7 @@ exports.up = function(knex, Promise) {
   })
 };
 
-exports.down = function(knex, Promise) {
+exports.down = (knex, Promise) => {
   knex.raw('DROP TABLE users CASCADE');
   knex.raw('DROP TABLE movies CASCADE');
   knex.schema.dropTable('searches');
