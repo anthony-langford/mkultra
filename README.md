@@ -7,7 +7,7 @@ Bucket was built in a Node.js environment on Javascript, PostgreSQL database, Kn
 ## Project Setup
 
 1. Clone this repository
-2. Run `npm run local`
+2. Run `npm start`
 3. Visit `http://localhost:8080/`
 
 ## Getting Started

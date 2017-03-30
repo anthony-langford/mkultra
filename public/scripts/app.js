@@ -181,7 +181,6 @@ $(document).ready(function() {
       let newMovie = createMovieItem(itemData, userInput.inputComment, itemData.date);
       $(".movieList").append(newMovie);
 
-
       } else {
         console.log("Submit item button clicked, performing Ajax call...");
         console.log(userInput.itemName);
