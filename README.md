@@ -1,6 +1,6 @@
 # Bucket
 
-Bucket is a web application that allows users to search for a movie, restaurant, or book and have it automatically categorized and added to a personalized to-do list for future reference.
+Bucket is a web application that allows users to search for music, movies, or restaurants, and have them automatically categorized and added to a personalized to-do list for future reference.
 
 Bucket was built in a Node.js environment on Javascript, PostgreSQL database, Knex, and several APIs including iMDB API, Spotify API, Google API, and Wolfram API.
 
