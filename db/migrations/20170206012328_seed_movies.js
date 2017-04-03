@@ -18,5 +18,5 @@ exports.up = (knex, Promise) => {
 };
 
 exports.down = (knex, Promise) => {
-  return knex('movies').where({name: 'Gladiator'}).del();
+  return knex('movies').where({ name: 'Gladiator' }).del();
 };

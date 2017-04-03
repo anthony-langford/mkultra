@@ -52,7 +52,7 @@ module.exports = (knex) => {
     const password = req.body.password;
       if (!email || !password) {
         req.flash("loginMsg", "Please fillout the required input fields");
-        return res.redirect("login");
+        return res.redirect("/login");
     }
     knex.select("*")
     .from("users")
@@ -63,46 +63,46 @@ module.exports = (knex) => {
         res.redirect("/login");
       } else if (!bcrypt.compareSync(password, result[0].password)){
         req.flash("loginMsg", "The password you entered is incorrect. Please try again");
-        return res.redirect("login");
+        return res.redirect("/login");
       } else {
         return res.redirect('/users');
       }
     })
   });
 
-  // router.post("/register", (req, res) => {
-  //   const email = req.body.email;
-  //   const password = req.body.password;
-  //   const name = req.body.name;
-  //   if (!email || !password || !name) {
-  //     req.flash("registerMsg", "Please fill out the required input fields");
-  //     res.redirect("register");
-  //   } else {
-  //     knex.select("*")
-  //     .from("users")
-  //     .where("email", email)
-  //     .then((results) => {
-  //       if(results.length == 0) {
-  //         const hashedPassword = bcrypt.hashSync(password);
-  //         const newUser = {
-  //           name: name,
-  //           email: email,
-  //           password: hashedPassword
-  //         };
-  //         knex("users")
-  //         .insert(newUser)
-  //         .then(() => {
-  //           req.session.user = newUser;
-  //           res.redirect("/");
-  //         });
-  //       }
-  //       else {
-  //         req.flash("registerMsg", "An account linked to this user currently exists: Please sign in");
-  //         res.redirect("register");
-  //       }
-  //     });
-  //   }
-  // });
+  router.post("/register", (req, res) => {
+    const email = req.body.email;
+    const password = req.body.password;
+    const name = req.body.name;
+    if (!email || !password || !name) {
+      req.flash("registerMsg", "Please fill out the required input fields");
+      res.redirect("register");
+    } else {
+      knex.select("*")
+      .from("users")
+      .where("email", email)
+      .then((results) => {
+        if(results.length == 0) {
+          const hashedPassword = bcrypt.hashSync(password);
+          const newUser = {
+            name: name,
+            email: email,
+            password: hashedPassword
+          };
+          knex("users")
+          .insert(newUser)
+          .then(() => {
+            req.session.user = newUser;
+            res.redirect("/");
+          });
+        }
+        else {
+          req.flash("registerMsg", "An account linked to this user currently exists: Please sign in");
+          res.redirect("register");
+        }
+      });
+    }
+  });
 
   router.post("/logout", (req, res) => {
     req.session.destroy((err) => {

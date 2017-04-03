@@ -42,7 +42,7 @@ app.use("/api/users", usersRoutes(knex));
 // Home page
 app.get("/", (req, res) => {
   // if (req.session.user) {
-  //     res.render("index", { isLoggedIn: true});
+  //     res.render("index", { isLoggedIn: true });
   //   } else {
       res.render("index", { isLoggedIn: false });
     // }

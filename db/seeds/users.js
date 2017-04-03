@@ -1,10 +1,11 @@
 exports.seed = function(knex, Promise) {
   return Promise.all([
-    knex('users').del()
+    knex('users').del(),
+    knex('movies').del()
     ])
-    .then(function () {
+    .then(() => {
       return Promise.all([
-        knex('users').insert({id: 1, name: 'Alice'}),
+        knex('users').insert({ id: 1, name: 'Alice', email: 'example@eg.com', password: '' }),
         knex('movies').insert({
           title: 'Gladiator',
           year: 2000,
